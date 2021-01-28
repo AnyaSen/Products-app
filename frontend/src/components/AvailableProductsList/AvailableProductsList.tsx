@@ -1,7 +1,6 @@
-import React, { ReactElement, useEffect } from "react";
-import { ThunkDispatch } from "redux-thunk";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts } from "../../redux/actions";
+import React, { ReactElement } from "react";
+import { useSelector } from "react-redux";
+
 import { IAppState } from "../../redux/store";
 import { productType } from "../../types";
 
@@ -12,19 +11,7 @@ import Product from "../Product";
 import ButtonWithImg from "../shared/ButtonWithImg";
 
 export default function AvailableProductsList(): ReactElement {
-  const isLoading = useSelector((state: IAppState) => state.app.isLoading);
-  const isError = useSelector((state: IAppState) => state.app.isError);
   const products = useSelector((state: IAppState) => state.app.products);
-  const dispatch: ThunkDispatch<{}, {}, any> = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchProducts());
-  }, []);
-
-  console.log(products);
-
-  if (isLoading) return <h1>Loading...</h1>;
-  if (isError) return <h1>Error</h1>;
 
   return (
     <div className={Styles.AvailableProductsListContainer}>

@@ -1,0 +1,10 @@
+@import "../../assets//scss/mixins";
+@import "../../assets//scss/variables";
+
+.LoadingPage {
+  @include full-height-and-center;
+
+  h3 {
+    margin-top: $space-2;
+  }
+}

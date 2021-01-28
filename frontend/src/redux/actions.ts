@@ -10,7 +10,10 @@ export interface IAction {
 const {
   FETCH_PRODUCTS_LOADING,
   FETCH_PRODUCTS_SUCCESS,
-  FETCH_PRODUCTS_ERROR
+  FETCH_PRODUCTS_ERROR,
+  FETCH_PRODUCT_BY_ID_LOADING,
+  FETCH_PRODUCT_BY_ID_SUCCESS,
+  FETCH_PRODUCT_BY_ID_ERROR
 } = AppEvents;
 
 export const fetchProductsLoading = () => {
@@ -45,6 +48,40 @@ export const fetchProducts = () => {
       .catch(e => {
         console.log("error:", e);
         dispatch(fetchProductsError());
+      });
+  };
+};
+
+export const fetchProductByIdLoading = () => {
+  return {
+    type: FETCH_PRODUCT_BY_ID_LOADING
+  };
+};
+export const fetchProductByIdSuccess = (payload: productType) => {
+  return {
+    type: FETCH_PRODUCT_BY_ID_SUCCESS,
+    payload
+  };
+};
+export const fetchProductByIdError = () => {
+  return {
+    type: FETCH_PRODUCT_BY_ID_ERROR
+  };
+};
+
+export const fetchProductById = (id: string) => {
+  return (dispatch: Dispatch<IAction>) => {
+    dispatch(fetchProductByIdLoading());
+
+    axios
+      .get(`/products/${id}`)
+      .then(response => {
+        const product = response.data;
+        dispatch(fetchProductByIdSuccess(product));
+      })
+      .catch(e => {
+        console.log("error:", e);
+        dispatch(fetchProductByIdError());
       });
   };
 };

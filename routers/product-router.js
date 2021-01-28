@@ -34,7 +34,7 @@ const upload = multer({
   },
   fileFilter(req, file, cb) {
     if (!file.originalname.match(/\.(jpeg|jpg|png)$/)) {
-      return cb(new Error("File must be an image"));
+      return cb(new Error("File must be an image of jpeg, jpg or png format)"));
     }
 
     cb(undefined, true);

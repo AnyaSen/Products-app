@@ -1,0 +1,27 @@
+@import "../../assets/scss/variables";
+
+.AvailableProductsListContainer {
+  background-color: $color-light-grey;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 $space-6;
+
+  .AvailableProductsListHeader {
+    display: flex;
+    margin-bottom: $space-4;
+
+    button {
+      margin-left: $space-2;
+    }
+  }
+
+  .AvailableProductsList {
+    margin: $space-1;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+}

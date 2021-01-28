@@ -1,6 +1,7 @@
 export interface productType {
   name: string;
-  price: { price: number; unit: string };
+  _id: string;
+  price: { priceEuros: number; priceCents?: number; unit: string };
   pricePerKg: number;
   description: string;
   img: Buffer;

@@ -1,0 +1,41 @@
+@import "../../assets/scss/variables";
+
+.ProductContainer {
+  background-color: $color-white;
+  margin: $space-0;
+  display: flex;
+  flex-direction: column;
+  padding: $space-2;
+  min-width: 12rem;
+
+  .Product {
+    color: $color-text;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+
+    .ProductImage {
+      height: 5rem;
+      width: 7rem;
+      object-fit: contain;
+      align-self: center;
+    }
+
+    .ProductPrice {
+      align-self: flex-end;
+      line-height: 1.2rem;
+      font-weight: 400;
+
+      .ProductPricePerKg {
+        color: $color-grey;
+        font-size: $font-xxs;
+        text-align: center;
+      }
+    }
+  }
+
+  button {
+    align-self: flex-end;
+    margin-top: $space-0;
+  }
+}

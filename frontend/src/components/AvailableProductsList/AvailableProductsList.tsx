@@ -7,7 +7,7 @@ import { productType } from "../../types";
 import Styles from "./AvailableProductsList.module.scss";
 import plusSignSvg from "../../assets/img/plusSign.svg";
 
-import Product from "../Product";
+import ProductCard from "../ProductCard";
 import ButtonWithImg from "../shared/ButtonWithImg";
 
 export default function AvailableProductsList(): ReactElement {
@@ -25,7 +25,8 @@ export default function AvailableProductsList(): ReactElement {
           const { name, price, _id, pricePerKg } = product;
           const { priceEuros, priceCents, unit } = price;
           return (
-            <Product
+            <ProductCard
+              id={_id}
               name={name}
               key={_id}
               priceEuros={priceEuros}

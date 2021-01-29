@@ -1,11 +1,29 @@
 @import "../../assets/scss/variables";
+@import "../../assets/scss/breakpoints";
 
 .ProductPage {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: $space-3 $space-6;
+  padding: $space-5 $space-6;
+
+  @include lg {
+    padding: $space-5 $space-5;
+  }
+
+  @include md {
+    align-items: center;
+    padding: $space-5 $space-4;
+  }
+
+  @include sm {
+    padding: $space-5 $space-3;
+  }
+
+  @include xs {
+    padding: $space-4 $space-2;
+  }
 
   .ProductPageHeader {
     display: flex;
@@ -13,8 +31,13 @@
     align-items: center;
     margin-bottom: $space-6;
 
+    @include md {
+      margin-bottom: 0;
+    }
+
     h1 {
       margin-left: $space-3;
+      text-align: center;
     }
 
     button {
@@ -25,10 +48,18 @@
   .ProductInfoAndPhoto {
     display: flex;
 
+    @include md {
+      flex-direction: column;
+    }
+
     .ProductPhoto {
       height: 12rem;
       max-width: 20rem;
       object-fit: contain;
+
+      @include md {
+        margin: $space-4 0;
+      }
     }
 
     .ProductInfo {
@@ -37,24 +68,61 @@
       flex-direction: column;
       justify-content: space-between;
 
-      h2 {
-        font-weight: 400;
-        margin-bottom: $space-0;
+      @include lg {
+        flex-direction: row;
       }
 
-      .ProductPrice {
-        display: flex;
-        flex-direction: column;
-        line-height: 1.2rem;
+      @include md {
+        margin-left: 0;
+      }
 
-        span {
-          color: $color-grey;
+      @include xs {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .ProductNameAndPrice {
+        .ProductPrice {
+          display: flex;
+          flex-direction: column;
+          line-height: 1.2rem;
+
+          span {
+            color: $color-grey;
+          }
+        }
+
+        h2 {
+          font-weight: 400;
+          margin-bottom: $space-0;
+        }
+
+        @include lg {
+          margin-right: $space-5;
+        }
+
+        @include xs {
+          margin-right: 0;
+          margin-bottom: $space-2;
         }
       }
 
       .ProductTags {
         display: flex;
         flex-direction: row;
+
+        div {
+          margin-right: $space-1;
+        }
+
+        @include lg {
+          flex-direction: column;
+
+          div {
+            margin-bottom: $space-1;
+            margin-right: 0;
+          }
+        }
       }
     }
   }
@@ -65,6 +133,19 @@
     h2 {
       margin-top: $space-4;
       margin-bottom: $space-2;
+    }
+
+    @include md {
+      margin-top: $space-5;
+
+      h2 {
+        margin-top: 0;
+        text-align: center;
+      }
+    }
+
+    @include sm {
+      margin-top: $space-4;
     }
   }
 }

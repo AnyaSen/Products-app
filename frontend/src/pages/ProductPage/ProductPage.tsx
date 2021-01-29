@@ -58,7 +58,7 @@ export default function ProductPage({ match }: Props): ReactElement {
         <img src={`/products/${id}/img`} className={Styles.ProductPhoto} />
 
         <div className={Styles.ProductInfo}>
-          <div>
+          <div className={Styles.ProductNameAndPrice}>
             <h2>{name}</h2>
 
             {price && (

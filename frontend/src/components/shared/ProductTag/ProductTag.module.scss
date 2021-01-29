@@ -5,7 +5,7 @@
   background-color: $color-light-grey;
   padding: 0.2rem $space-1;
   border-radius: 1.5rem;
-  margin-right: $space-1;
+  word-break: keep-all;
 
   img {
     height: 2rem;

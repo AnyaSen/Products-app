@@ -1,0 +1,52 @@
+@import "../../assets/scss/variables";
+
+.ProductPage {
+  background-color: $color-light-grey;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 $space-6;
+
+  h1 {
+    margin-bottom: $space-5;
+  }
+
+  .ProductInfoAndPhoto {
+    display: flex;
+
+    img {
+      height: 12rem;
+      max-width: 20rem;
+      object-fit: contain;
+    }
+
+    .ProductInfo {
+      margin-left: $space-6;
+
+      h2 {
+        font-weight: 400;
+        margin-bottom: $space-0;
+      }
+
+      .ProductPrice {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.2rem;
+
+        span {
+          color: $color-grey;
+        }
+      }
+    }
+  }
+
+  .ProductDescription {
+    margin-top: $space-5;
+
+    h2 {
+      margin-top: $space-4;
+      margin-bottom: $space-2;
+    }
+  }
+}

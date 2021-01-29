@@ -51,7 +51,7 @@ export default function ProductPage({ match }: Props): ReactElement {
       <div className={Styles.ProductPageHeader}>
         <ArrowButton linkTo="/" />
         <h1>Product information</h1>
-        <ButtonWithImg imgSrc={modifySignSvg} altText="Edit" />
+        {/* <ButtonWithImg imgSrc={modifySignSvg} altText="Edit" /> */}
       </div>
 
       <div className={Styles.ProductInfoAndPhoto}>

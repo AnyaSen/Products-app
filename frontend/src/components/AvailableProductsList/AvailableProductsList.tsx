@@ -17,7 +17,7 @@ export default function AvailableProductsList(): ReactElement {
     <div className={Styles.AvailableProductsListContainer}>
       <div className={Styles.AvailableProductsListHeader}>
         <h1>Available products</h1>
-        <ButtonWithImg imgSrc={plusSignSvg} altText="Create Product" />
+        {/* <ButtonWithImg imgSrc={plusSignSvg} altText="Create Product" /> */}
       </div>
 
       <div className={Styles.AvailableProductsList}>

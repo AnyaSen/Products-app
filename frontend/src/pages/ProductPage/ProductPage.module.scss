@@ -5,10 +5,21 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 0 $space-6;
+  padding: $space-3 $space-6;
 
-  h1 {
-    margin-bottom: $space-5;
+  .ProductPageHeader {
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    margin-bottom: $space-6;
+
+    h1 {
+      margin-left: $space-3;
+    }
+
+    button {
+      margin-left: $space-3;
+    }
   }
 
   .ProductInfoAndPhoto {

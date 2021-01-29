@@ -6,10 +6,13 @@ import { ThunkDispatch } from "redux-thunk";
 import { fetchProductById } from "../../redux/actions";
 
 import Styles from "./ProductPage.module.scss";
+import modifySignSvg from "../../assets/img/modifySign.svg";
 
 import LoadingPage from "../LoadingPage";
 import ErrorPage from "../ErrorPage";
 import ProductTag from "../../components/shared/ProductTag";
+import ArrowButton from "../../components/shared/ArrowButton";
+import ButtonWithImg from "../../components/shared/ButtonWithImg";
 
 interface MatchParams {
   id: string;
@@ -45,7 +48,12 @@ export default function ProductPage({ match }: Props): ReactElement {
 
   return (
     <div className={Styles.ProductPage}>
-      <h1>Product information</h1>
+      <div className={Styles.ProductPageHeader}>
+        <ArrowButton linkTo="/" />
+        <h1>Product information</h1>
+        <ButtonWithImg imgSrc={modifySignSvg} altText="Edit" />
+      </div>
+
       <div className={Styles.ProductInfoAndPhoto}>
         <img src={`/products/${id}/img`} className={Styles.ProductPhoto} />
 

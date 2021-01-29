@@ -5,4 +5,7 @@ export interface productType {
   pricePerKg: number;
   description: string;
   img: Buffer;
+  glutenFree: boolean;
+  lactoseFree: boolean;
+  vegan: boolean;
 }

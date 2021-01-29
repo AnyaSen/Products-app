@@ -9,7 +9,7 @@ import Styles from "./ProductPage.module.scss";
 
 import LoadingPage from "../LoadingPage";
 import ErrorPage from "../ErrorPage";
-import PricePerUnit from "../../components/shared/PricePerUnit";
+import ProductTag from "../../components/shared/ProductTag";
 
 interface MatchParams {
   id: string;
@@ -32,21 +32,41 @@ export default function ProductPage({ match }: Props): ReactElement {
 
   if (isLoading) return <LoadingPage />;
   if (isError) return <ErrorPage />;
-  const { name, price, description, pricePerKg } = currentProduct;
-  const { priceEuros, priceCents, unit } = price;
+
+  const {
+    name,
+    price,
+    description,
+    pricePerKg,
+    glutenFree,
+    lactoseFree,
+    vegan
+  } = currentProduct;
 
   return (
     <div className={Styles.ProductPage}>
       <h1>Product information</h1>
       <div className={Styles.ProductInfoAndPhoto}>
-        <img src={`/products/${id}/img`} />
+        <img src={`/products/${id}/img`} className={Styles.ProductPhoto} />
 
         <div className={Styles.ProductInfo}>
-          <h2>{name}</h2>
-          <p className={Styles.ProductPrice}>
-            {priceEuros}.{priceCents}/{unit}
-            <span>{pricePerKg}/kg</span>
-          </p>
+          <div>
+            <h2>{name}</h2>
+
+            {price && (
+              <p className={Styles.ProductPrice}>
+                {price.priceEuros}.{price.priceCents ? price.priceCents : "00"}/
+                {price.unit}
+                <span>{pricePerKg}/kg</span>
+              </p>
+            )}
+          </div>
+
+          <div className={Styles.ProductTags}>
+            {glutenFree && <ProductTag type="gluten-free" />}
+            {lactoseFree && <ProductTag type="lactose-free" />}
+            {vegan && <ProductTag type="vegan" />}
+          </div>
         </div>
       </div>
 

@@ -10,7 +10,11 @@ const productSchema = new mongoose.Schema({
   description: { type: String, required: true },
   img: {
     type: Buffer
-  }
+  },
+
+  glutenFree: { type: Boolean, required: true },
+  lactoseFree: { type: Boolean, required: true },
+  vegan: { type: Boolean, required: true }
 });
 
 const Product = mongoose.model("Product", productSchema);

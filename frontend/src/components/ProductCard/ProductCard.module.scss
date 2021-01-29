@@ -1,0 +1,82 @@
+@import "../../assets/scss/variables";
+@import "../../assets/scss/breakpoints";
+
+.ProductContainer {
+  background-color: $color-white;
+  margin: $space-0;
+  display: flex;
+  flex-direction: column;
+  padding: $space-2;
+  min-width: 12rem;
+
+  @include lg {
+    flex-direction: row;
+  }
+
+  @include xs {
+    padding: $space-0;
+    flex-direction: column;
+  }
+
+  .Product {
+    color: $color-text;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+
+    @include lg {
+      flex-direction: row;
+
+      p {
+        align-self: center;
+        margin: 0 $space-2;
+      }
+    }
+
+    @include xs {
+      flex-direction: column;
+    }
+
+    @include xs {
+      padding: $space-0;
+
+      p {
+        align-self: flex-start;
+      }
+    }
+
+    .ProductImage {
+      height: 5rem;
+      width: 7rem;
+      object-fit: contain;
+      align-self: center;
+    }
+
+    .ProductPrice {
+      align-self: flex-end;
+      line-height: 1.2rem;
+      font-weight: 400;
+
+      .ProductPricePerKg {
+        color: $color-grey;
+        font-size: $font-xxs;
+        text-align: center;
+      }
+    }
+  }
+
+  button {
+    align-self: flex-end;
+    margin-top: $space-0;
+
+    @include lg {
+      align-self: center;
+      margin-top: 0;
+    }
+
+    @include xs {
+      align-self: flex-end;
+      margin-top: $space-0;
+    }
+  }
+}

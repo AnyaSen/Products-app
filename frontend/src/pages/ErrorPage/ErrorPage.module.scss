@@ -1,0 +1,14 @@
+@import "../../assets//scss/mixins";
+@import "../../assets//scss/variables";
+
+.ErrorPage {
+  @include full-height-and-center;
+
+  img {
+    height: 5rem;
+  }
+
+  h3 {
+    margin-top: $space-2;
+  }
+}

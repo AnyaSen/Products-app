@@ -1,0 +1,23 @@
+@import "../../../assets//scss/variables";
+@import "../../../assets/scss/animations";
+
+.Loader {
+  img {
+    height: 1rem;
+    margin: $space-0;
+  }
+
+  .loadingDotOne {
+    animation: opacityOnAndOff 4s ease-in-out infinite;
+  }
+
+  .loadingDotTwo {
+    animation: opacityOnAndOff 4s ease-in-out infinite;
+    animation-delay: 0.4s;
+  }
+
+  .loadingDotThree {
+    animation: opacityOnAndOff 4s ease-in-out infinite;
+    animation-delay: 0.8s;
+  }
+}

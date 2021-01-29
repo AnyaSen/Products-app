@@ -1,0 +1,23 @@
+$base_unit: 0.5rem;
+
+$font-xxs: $base_unit * 1.5; // 0.75rem
+$font-xs: $base_unit * 1.75; // 0.875rem
+$font-sm: $base_unit * 2; // 1rem
+$font-md: $base_unit * 3; // 1.5rem
+$font-lg: $base_unit * 4; // 2rem
+$font-xl: $base_unit * 5; // 2.5rem
+
+$space-0: $base_unit * 1; // 0.5rem
+$space-1: $base_unit * 1.5; // 0.75rem
+$space-2: $base_unit * 2; // 1rem
+$space-3: $base_unit * 3; // 1.5rem
+$space-4: $base_unit * 4; // 2rem
+$space-5: $base_unit * 6; // 3rem
+$space-6: $base_unit * 10; // 5rem
+
+$color-light-grey: #fafafa;
+$color-grey: #b2b2b2;
+$color-white: #fff;
+$color-text: #333333;
+
+$shadow-1: 0px 3px 6px rgba(214, 214, 214, 0.58);

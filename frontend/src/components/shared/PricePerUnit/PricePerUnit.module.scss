@@ -1,0 +1,18 @@
+@import "../../../assets//scss/variables";
+
+.PricePerUnit {
+  display: flex;
+  width: fit-content;
+  align-items: center;
+
+  .PriceEuros {
+    font-size: $font-lg;
+    padding-right: 0.2rem;
+  }
+
+  .PriceCentsAndUnit {
+    display: flex;
+    flex-direction: column;
+    font-size: $font-xxs;
+  }
+}

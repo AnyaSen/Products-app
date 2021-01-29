@@ -1,0 +1,13 @@
+@import "./breakpoints";
+
+h1 {
+  font-weight: 500;
+
+  @include sm {
+    font-size: $font-md;
+  }
+}
+
+h3 {
+  font-weight: 400;
+}

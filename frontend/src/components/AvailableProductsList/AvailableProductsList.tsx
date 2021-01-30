@@ -9,6 +9,7 @@ import plusSignSvg from "../../assets/img/plusSign.svg";
 
 import ProductCard from "../ProductCard";
 import ButtonWithImg from "../shared/ButtonWithImg";
+import { Link } from "react-router-dom";
 
 export default function AvailableProductsList(): ReactElement {
   const products = useSelector((state: IAppState) => state.app.products);
@@ -17,27 +18,36 @@ export default function AvailableProductsList(): ReactElement {
     <div className={Styles.AvailableProductsListContainer}>
       <div className={Styles.AvailableProductsListHeader}>
         <h1>Available products</h1>
-        {/* <ButtonWithImg imgSrc={plusSignSvg} altText="Create Product" /> */}
+        <Link to="/create">
+          <ButtonWithImg imgSrc={plusSignSvg} altText="Create Product" />
+        </Link>
       </div>
-
-      <div className={Styles.AvailableProductsList}>
-        {products.map((product: productType) => {
-          const { name, price, _id, pricePerKg } = product;
-          const { priceEuros, priceCents, unit } = price;
-          return (
-            <ProductCard
-              id={_id}
-              name={name}
-              key={_id}
-              priceEuros={priceEuros}
-              priceCents={priceCents}
-              unit={unit}
-              pricePerKg={pricePerKg}
-              img={`/products/${_id}/img`}
-            />
-          );
-        })}
-      </div>
+      {products.length !== 0 ? (
+        <>
+          <div className={Styles.AvailableProductsList}>
+            {products.map((product: productType) => {
+              const { name, price, _id, pricePerKg } = product;
+              const { priceEuros, priceCents, unit } = price;
+              return (
+                <ProductCard
+                  id={_id}
+                  name={name}
+                  key={_id}
+                  priceEuros={priceEuros}
+                  priceCents={priceCents}
+                  unit={unit}
+                  pricePerKg={pricePerKg}
+                  img={`/products/${_id}/img`}
+                />
+              );
+            })}
+          </div>
+        </>
+      ) : (
+        <h3>
+          No products found. Press the blus button above to add a product.
+        </h3>
+      )}
     </div>
   );
 }

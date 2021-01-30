@@ -19,7 +19,7 @@ export default function AvailableProductsList(): ReactElement {
       <div className={Styles.AvailableProductsListHeader}>
         <h1>Available products</h1>
         <Link to="/create">
-          <ButtonWithImg imgSrc={plusSignSvg} altText="Create Product" />
+          <ButtonWithImg imgSrc={plusSignSvg} altText="Create Product" filled />
         </Link>
       </div>
       {products.length !== 0 ? (

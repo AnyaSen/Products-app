@@ -1,16 +1,10 @@
-<svg id="Group_4" data-name="Group 4" xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 42 42">
-  <g id="Group_1" data-name="Group 1">
-    <g id="Ellipse_1" data-name="Ellipse 1" fill="#fff" stroke="#e8702d" stroke-width="1">
-      <circle cx="21" cy="21" r="21" stroke="none"/>
-      <circle cx="21" cy="21" r="20.5" fill="none"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="22.208" height="25.484" viewBox="0 0 22.208 25.484">
+  <g id="Group_26" data-name="Group 26" transform="translate(0 21.787) rotate(-51)">
+    <g id="Polygon_1" data-name="Polygon 1" transform="translate(0 5.875) rotate(-90)">
+      <path id="Path_1" data-name="Path 1" d="M4.727,4.43H0L2.363,0Z" transform="translate(0.574 0.732)" fill="#e8702d"/>
+      <path id="Path_2" data-name="Path 2" d="M2.938,1.464,1.148,4.818H4.727L2.938,1.464M2.938,0,5.875,5.507H0Z" transform="translate(0)" fill="#e8702d"/>
     </g>
-  </g>
-  <g id="Group_26" data-name="Group 26" transform="translate(12.877 27.916) rotate(-51)">
-    <g id="Polygon_1" data-name="Polygon 1" transform="translate(0 4.57) rotate(-90)">
-      <path id="Path_1" data-name="Path 1" d="M3.676,3.446H0L1.838,0Z" transform="translate(0.447 0.569)" fill="#e8702d"/>
-      <path id="Path_2" data-name="Path 2" d="M2.285,1.139.893,3.747H3.676L2.285,1.139M2.285,0,4.57,4.283H0Z" transform="translate(0)" fill="#e8702d"/>
-    </g>
-    <rect id="Rectangle_9" data-name="Rectangle 9" width="1.557" height="4.569" transform="translate(20.247 0)" fill="#e8702d"/>
-    <path id="Rectangle_10" data-name="Rectangle 10" d="M0,0H14.407V4.569H0Z" transform="translate(5.062 0)" fill="#e8702d"/>
+    <rect id="Rectangle_9" data-name="Rectangle 9" width="2.002" height="5.875" transform="translate(26.032 0)" fill="#e8702d"/>
+    <path id="Rectangle_10" data-name="Rectangle 10" d="M0,0H18.523V5.875H0Z" transform="translate(6.508 0)" fill="#e8702d"/>
   </g>
 </svg>

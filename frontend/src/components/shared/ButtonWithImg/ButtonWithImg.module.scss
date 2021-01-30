@@ -1,10 +1,26 @@
+@import "../../../assets//scss/variables";
+
 .ButtonWithImg {
   cursor: pointer;
   outline: none;
-  border: none;
+  border: 1px solid $color-orange;
+  border-radius: 50%;
+  min-height: 2.3rem;
+  min-width: 2.3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: inherit;
 
   img {
-    height: 2rem;
+    height: 0.6rem;
+    z-index: 2;
   }
+}
+
+.ButtonWithImgFilled {
+  @extend .ButtonWithImg;
+
+  border: none;
+  background-color: $color-orange;
 }

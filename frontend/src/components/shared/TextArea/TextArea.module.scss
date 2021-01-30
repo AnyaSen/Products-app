@@ -1,0 +1,14 @@
+@import "../../../assets/scss/variables";
+
+.TextArea {
+  box-sizing: border-box;
+  height: 5rem;
+  min-width: 40rem;
+  outline: none;
+  border: 1px solid $color-grey;
+  font-family: inherit;
+  padding: $space-0;
+  border-radius: 0.2rem;
+  resize: none;
+  margin: $space-0;
+}

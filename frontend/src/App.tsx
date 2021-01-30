@@ -3,7 +3,7 @@ import "./App.scss";
 import { Switch, Route, Redirect } from "react-router";
 
 import ProductPage from "./pages/ProductPage";
-// import CreateProductFormPage from "./pages/CreateProductFormPage";
+import CreateProductFormPage from "./pages/CreateProductFormPage";
 import AvailableProductsPage from "./pages/AvailableProductsPage";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -30,7 +30,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={AvailableProductsPage} />
         <Route exact path="/product/:id" component={ProductPage} />
-        {/* <Route exact path="/create" component={CreateProductFormPage} /> */}
+        <Route exact path="/create" component={CreateProductFormPage} />
         <Redirect to="/" />
       </Switch>
     </div>

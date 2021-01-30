@@ -13,7 +13,17 @@ const {
   FETCH_PRODUCTS_ERROR,
   FETCH_PRODUCT_BY_ID_LOADING,
   FETCH_PRODUCT_BY_ID_SUCCESS,
-  FETCH_PRODUCT_BY_ID_ERROR
+  FETCH_PRODUCT_BY_ID_ERROR,
+  SET_NAME,
+  SET_PRICE_EUROS,
+  SET_PRICE_CENTS,
+  SET_PRICE_PER_KG,
+  SET_UNIT,
+  SET_GLUTEN_FREE,
+  SET_LACTOSE_FREE,
+  SET_VEGAN,
+  SET_DESCRIPTION,
+  SET_FILE
 } = AppEvents;
 
 export const fetchProductsLoading = () => {
@@ -83,5 +93,66 @@ export const fetchProductById = (id: string) => {
         console.log("error:", e);
         dispatch(fetchProductByIdError());
       });
+  };
+};
+
+export const setName = (payload: string) => {
+  return {
+    type: SET_NAME,
+    payload
+  };
+};
+export const setPriceEuros = (payload: string | number) => {
+  return {
+    type: SET_PRICE_EUROS,
+    payload
+  };
+};
+export const setPriceCents = (payload: string) => {
+  return {
+    type: SET_PRICE_CENTS,
+    payload
+  };
+};
+export const setPricePerKg = (payload: string | number) => {
+  return {
+    type: SET_PRICE_PER_KG,
+    payload
+  };
+};
+export const setUnit = (payload: string) => {
+  return {
+    type: SET_UNIT,
+    payload
+  };
+};
+export const setGlutenFree = (payload: boolean) => {
+  return {
+    type: SET_GLUTEN_FREE,
+    payload
+  };
+};
+export const setLactoseFree = (payload: boolean) => {
+  return {
+    type: SET_LACTOSE_FREE,
+    payload
+  };
+};
+export const setVegan = (payload: boolean) => {
+  return {
+    type: SET_VEGAN,
+    payload
+  };
+};
+export const setDescription = (payload: string) => {
+  return {
+    type: SET_DESCRIPTION,
+    payload
+  };
+};
+export const setFile = (payload: File[]) => {
+  return {
+    type: SET_FILE,
+    payload
   };
 };

@@ -45,7 +45,7 @@ export default function ProductCard({
         <p> {name}</p>
       </Link>
 
-      {/* <ButtonWithImg imgSrc={modifySignSvg} altText="Edit" /> */}
+      <ButtonWithImg imgSrc={modifySignSvg} altText="Edit" iconHeight="1rem" />
     </div>
   );
 }

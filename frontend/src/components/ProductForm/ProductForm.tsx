@@ -1,21 +1,35 @@
-import React, { ReactElement, FormEvent, useState, useRef } from "react";
+import React, {
+  ReactElement,
+  FormEvent,
+  useState,
+  useRef,
+  useEffect
+} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { IAppState } from "../../redux/store";
-import { clearForm } from "../../redux/actions";
+import {
+  clearForm,
+  postProduct,
+  enableSubmit,
+  disableSubmit,
+  fetchProducts
+} from "../../redux/actions";
+import { ThunkDispatch } from "redux-thunk";
+import { useHistory } from "react-router";
 
 import Styles from "./ProductForm.module.scss";
 import doneSignSvg from "../../assets/img/doneSign.svg";
 import cancelSignSvg from "../../assets/img/cancelSign.svg";
 
 import GeneralInfoSection from "./GeneralInfoSection";
-import DescriptionSection from "./DescriptionSection";
 import DropzoneComponent from "../shared/Dropzone";
 import ButtonWithImg from "../shared/ButtonWithImg";
 import ConfirmationCard from "../shared/ConfirmationCard";
-import { useEffect } from "react";
+import Loader from "../shared/Loader";
+import DescriptionSection from "./DescriptionSection/DescriptionSection";
 
 export default function ProductForm(): ReactElement {
-  const dispatch = useDispatch();
+  const dispatch: ThunkDispatch<{}, {}, any> = useDispatch();
 
   const [showCancelConfirmation, setShowCancelConfirmation] = useState(false);
 
@@ -31,20 +45,39 @@ export default function ProductForm(): ReactElement {
     file
   } = useSelector((state: IAppState) => state.form);
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const { form } = useSelector((state: IAppState) => state);
+  const { isPostProductLoading, enableSubmitButton } = useSelector(
+    (state: IAppState) => state.app
+  );
+
+  const readyToSubmit =
+    name !== "" && priceEuros !== "" && description !== "" && file.length === 1;
+
+  const history = useHistory();
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(
+
+    const product = {
       name,
-      priceEuros,
-      priceCents,
+      price: { priceEuros, priceCents },
       pricePerKg,
+      description,
       glutenFree,
       lactoseFree,
-      vegan,
-      description,
-      file
-    );
-    dispatch(clearForm());
+      vegan
+    };
+
+    if (file) {
+      const fd = new FormData();
+
+      fd.append("upload", file[0], file[0].name);
+
+      await dispatch(postProduct(product, fd));
+      dispatch(clearForm());
+      dispatch(fetchProducts());
+      history.push("/");
+    }
   };
 
   const handleLeaveFormClick = () => {
@@ -69,6 +102,14 @@ export default function ProductForm(): ReactElement {
     };
   }, [confitmationCard]);
 
+  useEffect(() => {
+    if (readyToSubmit && !enableSubmitButton) {
+      dispatch(enableSubmit());
+    } else if (!readyToSubmit && enableSubmitButton) {
+      dispatch(disableSubmit());
+    }
+  }, [form, readyToSubmit, enableSubmitButton]);
+
   return (
     <form onSubmit={handleSubmit} className={Styles.ProductForm}>
       <div className={Styles.ProductFormHeaderContainer}>
@@ -79,6 +120,7 @@ export default function ProductForm(): ReactElement {
             altText="Submit"
             buttonType="submit"
             filled
+            disabled={enableSubmitButton ? false : true}
           />
 
           <ButtonWithImg
@@ -89,6 +131,8 @@ export default function ProductForm(): ReactElement {
           />
         </div>
 
+        {isPostProductLoading && <Loader small />}
+
         {showCancelConfirmation && (
           <ConfirmationCard
             onClickYes={handleLeaveFormClick}
@@ -98,13 +142,15 @@ export default function ProductForm(): ReactElement {
           />
         )}
       </div>
-
-      <div className={Styles.DropzoneAndGeneralInfo}>
-        <DropzoneComponent />
-        <GeneralInfoSection />
+      <div className={Styles.DropzoneGeneralInfoAndDescriptionContainer}>
+        <div className={Styles.DropzoneGeneralInfoAndDescription}>
+          <div className={Styles.DropzoneAndGeneralInfo}>
+            <DropzoneComponent />
+            <GeneralInfoSection />
+          </div>
+          <DescriptionSection />{" "}
+        </div>
       </div>
-
-      <DescriptionSection />
     </form>
   );
 }

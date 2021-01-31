@@ -1,8 +1,9 @@
 @import "../../../assets/scss/variables";
 
 .InputFieldContainer {
+  margin: $space-1;
+
   .InputField {
-    margin: $space-1;
     padding: $space-0;
     font-size: $font-sm;
     border: 1px solid $color-grey;

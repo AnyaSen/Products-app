@@ -43,6 +43,7 @@ export default function GeneralInfoSection(): ReactElement {
           name="name"
           value={name}
           onChange={handleNameChange}
+          required
         />
 
         <div className={Styles.PricePerUnitInfo}>
@@ -54,6 +55,7 @@ export default function GeneralInfoSection(): ReactElement {
               value={priceEuros}
               onChange={handlePriceEurosChange}
               type="number"
+              required
             />
             <InputField
               small
@@ -64,7 +66,7 @@ export default function GeneralInfoSection(): ReactElement {
               type="number"
             />
           </div>
-          <p>/ kpl</p>
+          <p className={Styles.unit}>/ kpl</p>
         </div>
 
         <InputField

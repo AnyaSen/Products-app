@@ -1,6 +1,7 @@
 import React, { ReactElement } from "react";
 
 import Styles from "./InputField.module.scss";
+import RequiredStatusSubtext from "../../shared/RequiredStatusSubtext";
 
 type Props = {
   placeholder: string;
@@ -9,6 +10,7 @@ type Props = {
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void | undefined;
   type?: string;
   small?: boolean;
+  required?: boolean;
 };
 
 export default function InputField({
@@ -17,7 +19,8 @@ export default function InputField({
   value,
   onChange,
   type,
-  small
+  small,
+  required
 }: Props): ReactElement {
   return (
     <div className={Styles.InputFieldContainer}>
@@ -30,6 +33,8 @@ export default function InputField({
         onChange={onChange}
         autoComplete="off"
       />
+
+      <RequiredStatusSubtext required={required} />
     </div>
   );
 }

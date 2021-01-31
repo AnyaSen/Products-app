@@ -18,10 +18,12 @@ export default function DescriptionSection(): ReactElement {
   return (
     <div className={Styles.DescriptionSection}>
       <h2>Description</h2>
+
       <TextArea
         placeholder="Describe the product..."
         onChange={handleDescriptionChange}
         value={description}
+        required
       />
     </div>
   );

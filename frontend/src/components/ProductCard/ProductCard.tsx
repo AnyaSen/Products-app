@@ -12,7 +12,7 @@ interface Props {
   priceCents?: number;
   pricePerKg?: number;
   img: string;
-  id: string;
+  id: string | undefined;
 }
 
 export default function ProductCard({
@@ -39,7 +39,7 @@ export default function ProductCard({
           )}
         </div>
 
-        <p> {name}</p>
+        <p>{name}</p>
       </Link>
 
       <ButtonWithImg imgSrc={modifySignSvg} altText="Edit" iconHeight="1rem" />

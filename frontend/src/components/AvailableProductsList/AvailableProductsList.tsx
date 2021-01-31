@@ -1,6 +1,6 @@
 import React, { ReactElement } from "react";
 import { useSelector } from "react-redux";
-
+import { Link } from "react-router-dom";
 import { IAppState } from "../../redux/store";
 import { productType } from "../../types";
 
@@ -9,7 +9,6 @@ import plusSignSvg from "../../assets/img/plusSign.svg";
 
 import ProductCard from "../ProductCard";
 import ButtonWithImg from "../shared/ButtonWithImg";
-import { Link } from "react-router-dom";
 
 export default function AvailableProductsList(): ReactElement {
   const products = useSelector((state: IAppState) => state.app.products);

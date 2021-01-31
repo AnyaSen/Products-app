@@ -20,7 +20,6 @@
 
   .PricePerUnitInfo {
     display: flex;
-    align-items: center;
 
     .PriceEurosAndCents {
       display: flex;
@@ -30,13 +29,18 @@
       }
     }
 
-    p {
+    .unit {
       color: $color-dark-grey;
+      margin-top: $space-2;
     }
 
     @include xs {
       flex-direction: row;
       align-items: center;
+
+      .unit {
+        margin-top: 0;
+      }
     }
   }
 }

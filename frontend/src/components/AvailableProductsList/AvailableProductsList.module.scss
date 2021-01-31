@@ -28,6 +28,7 @@
   .AvailableProductsListHeader {
     display: flex;
     margin: $space-4 0;
+    align-items: center;
 
     h1 {
       text-align: center;
@@ -35,6 +36,12 @@
 
     a {
       margin-left: $space-2;
+    }
+
+    @include sm {
+      button {
+        margin-bottom: $space-2;
+      }
     }
 
     @include sm {

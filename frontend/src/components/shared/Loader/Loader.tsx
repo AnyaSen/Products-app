@@ -3,9 +3,13 @@ import React, { ReactElement } from "react";
 import Styles from "./Loader.module.scss";
 import loadingDotSvg from "../../../assets/img/loadingDot.svg";
 
-export default function Loader(): ReactElement {
+interface Props {
+  small?: boolean;
+}
+
+export default function Loader({ small }: Props): ReactElement {
   return (
-    <div className={Styles.Loader}>
+    <div className={small ? Styles.LoaderSmall : Styles.Loader}>
       <img src={loadingDotSvg} alt="loading" className={Styles.loadingDotOne} />
       <img src={loadingDotSvg} alt="loading" className={Styles.loadingDotTwo} />
       <img

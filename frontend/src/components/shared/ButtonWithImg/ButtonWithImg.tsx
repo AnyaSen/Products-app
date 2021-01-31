@@ -9,6 +9,7 @@ interface Props {
   filled?: boolean;
   iconHeight?: string;
   onClick?: () => void;
+  disabled?: boolean;
 }
 
 export default function ButtonWithImg({
@@ -17,13 +18,19 @@ export default function ButtonWithImg({
   buttonType,
   filled,
   iconHeight,
-  onClick
+  onClick,
+  disabled
 }: Props): ReactElement {
   return (
     <button
       className={filled ? Styles.ButtonWithImgFilled : Styles.ButtonWithImg}
+      style={{
+        opacity: disabled ? 0.6 : 1,
+        cursor: disabled ? "not-allowed" : "pointer"
+      }}
       type={buttonType}
       onClick={onClick}
+      disabled={disabled || false}
     >
       <img
         style={{ height: iconHeight && iconHeight }}

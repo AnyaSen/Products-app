@@ -6,14 +6,18 @@ export interface IState {
   products: Array<productType>;
   isLoading: boolean;
   isError: boolean;
-  currentProduct: object;
+  isPostProductError: boolean;
+  isPostProductLoading: boolean;
+  enableSubmitButton: boolean;
 }
 
 const initState: IState = {
   products: [],
   isLoading: true,
   isError: false,
-  currentProduct: {}
+  isPostProductError: false,
+  isPostProductLoading: false,
+  enableSubmitButton: false
 };
 
 const rootReducer = (state: IState = initState, action: IAction) => {
@@ -38,24 +42,35 @@ const rootReducer = (state: IState = initState, action: IAction) => {
         isError: true
       };
 
-    case AppEvents.FETCH_PRODUCT_BY_ID_LOADING:
+    case AppEvents.POST_PRODUCT_LOADING:
       return {
         ...state,
-        isLoading: true
+        isPostProductLoading: true,
+        enableSubmitButton: false
       };
 
-    case AppEvents.FETCH_PRODUCT_BY_ID_SUCCESS:
+    case AppEvents.POST_PRODUCT_SUCCESS:
       return {
         ...state,
-        isLoading: false,
-        currentProduct: action.payload
+        isPostProductLoading: false,
+        isPostProductError: false
+      };
+    case AppEvents.POST_PRODUCT_ERROR:
+      return {
+        ...state,
+        isPostProductLoading: false,
+        isPostProductError: true
+      };
+    case AppEvents.ENABLE_SUBMIT:
+      return {
+        ...state,
+        enableSubmitButton: true
       };
 
-    case AppEvents.FETCH_PRODUCT_BY_ID_ERROR:
+    case AppEvents.DISABLE_SUBMIT:
       return {
         ...state,
-        isLoading: false,
-        isError: true
+        enableSubmitButton: false
       };
 
     default:

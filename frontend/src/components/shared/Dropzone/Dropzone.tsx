@@ -15,19 +15,48 @@ export default function DropzoneComponent(): ReactElement {
     dispatch(setFile(acceptedFiles));
   };
 
+  const maxSize = 1000000;
+
   return (
-    <Dropzone onDrop={onDrop}>
-      {({ getRootProps, getInputProps, isDragActive }) => {
+    <Dropzone
+      onDrop={onDrop}
+      accept="image/jpeg, image/jpg, image/png"
+      minSize={0}
+      maxSize={maxSize}
+    >
+      {({
+        getRootProps,
+        getInputProps,
+        isDragActive,
+        isDragReject,
+        acceptedFiles,
+        fileRejections
+      }) => {
+        const isFileTooLarge = fileRejections.length > 0;
+
+        const isFileAccepted = acceptedFiles.length > 0;
+
         return (
           <div {...getRootProps()} className={Styles.DropzoneContainer}>
             <input {...getInputProps()} />
             {isDragActive ? (
-              <p>Drop files here...</p>
+              <p>Drop a file here...</p>
             ) : (
               <div className={Styles.Dropzone}>
-                <ButtonWithImg imgSrc={addImgSignCvg} altText="Add an image" />
+                <ButtonWithImg
+                  imgSrc={addImgSignCvg}
+                  altText="Add an image"
+                  buttonType="button"
+                />
               </div>
             )}
+            {isDragReject && (
+              <p>
+                The file must be <span>jpeg, jpg or png</span>
+              </p>
+            )}
+            {isFileAccepted && <h3>{acceptedFiles[0].name}</h3>}
+            {isFileTooLarge && <p>The file is too large</p>}
           </div>
         );
       }}

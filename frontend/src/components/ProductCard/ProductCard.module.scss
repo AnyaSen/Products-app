@@ -6,16 +6,19 @@
   margin: $space-0;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   padding: $space-2;
   min-width: 12rem;
 
   @include lg {
     flex-direction: row;
+    min-width: 23rem;
   }
 
   @include xs {
     padding: $space-0;
     flex-direction: column;
+    min-width: 12rem;
   }
 
   .Product {
@@ -35,9 +38,7 @@
 
     @include xs {
       flex-direction: column;
-    }
-
-    @include xs {
+      min-width: 12rem;
       padding: $space-0;
 
       p {

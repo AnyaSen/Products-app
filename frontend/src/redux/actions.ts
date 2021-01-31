@@ -11,9 +11,6 @@ const {
   FETCH_PRODUCTS_LOADING,
   FETCH_PRODUCTS_SUCCESS,
   FETCH_PRODUCTS_ERROR,
-  FETCH_PRODUCT_BY_ID_LOADING,
-  FETCH_PRODUCT_BY_ID_SUCCESS,
-  FETCH_PRODUCT_BY_ID_ERROR,
   SET_NAME,
   SET_PRICE_EUROS,
   SET_PRICE_CENTS,
@@ -23,7 +20,12 @@ const {
   SET_VEGAN,
   SET_DESCRIPTION,
   SET_FILE,
-  CLEAR_FORM_VALUES
+  CLEAR_FORM_VALUES,
+  POST_PRODUCT_LOADING,
+  POST_PRODUCT_SUCCESS,
+  POST_PRODUCT_ERROR,
+  ENABLE_SUBMIT,
+  DISABLE_SUBMIT
 } = AppEvents;
 
 export const fetchProductsLoading = () => {
@@ -58,40 +60,6 @@ export const fetchProducts = () => {
       .catch(e => {
         console.log("error:", e);
         dispatch(fetchProductsError());
-      });
-  };
-};
-
-export const fetchProductByIdLoading = () => {
-  return {
-    type: FETCH_PRODUCT_BY_ID_LOADING
-  };
-};
-export const fetchProductByIdSuccess = (payload: productType) => {
-  return {
-    type: FETCH_PRODUCT_BY_ID_SUCCESS,
-    payload
-  };
-};
-export const fetchProductByIdError = () => {
-  return {
-    type: FETCH_PRODUCT_BY_ID_ERROR
-  };
-};
-
-export const fetchProductById = (id: string) => {
-  return (dispatch: Dispatch<IAction>) => {
-    dispatch(fetchProductByIdLoading());
-
-    axios
-      .get(`/products/${id}`)
-      .then(response => {
-        const product = response.data;
-        dispatch(fetchProductByIdSuccess(product));
-      })
-      .catch(e => {
-        console.log("error:", e);
-        dispatch(fetchProductByIdError());
       });
   };
 };
@@ -153,5 +121,62 @@ export const setFile = (payload: File[]) => {
 export const clearForm = () => {
   return {
     type: CLEAR_FORM_VALUES
+  };
+};
+
+export const postProductLoading = () => {
+  return {
+    type: POST_PRODUCT_LOADING
+  };
+};
+
+export const postProductSuccess = () => {
+  return {
+    type: POST_PRODUCT_SUCCESS
+  };
+};
+
+export const postProductError = () => {
+  return {
+    type: POST_PRODUCT_ERROR
+  };
+};
+
+export const enableSubmit = () => {
+  return {
+    type: ENABLE_SUBMIT
+  };
+};
+export const disableSubmit = () => {
+  return {
+    type: DISABLE_SUBMIT
+  };
+};
+
+export const postProduct = (product: productType, productPicture: FormData) => {
+  return (dispatch: Dispatch<IAction>) => {
+    dispatch(postProductLoading());
+
+    const config = {
+      headers: { "content-type": "multipart/form-data" }
+    };
+
+    axios
+      .post("/product", product)
+      .then(response => {
+        return axios.post(
+          `/products/${response.data._id}/upload`,
+          productPicture,
+          config
+        );
+      })
+      .then(response => {
+        dispatch(postProductSuccess());
+        return response;
+      })
+      .catch(e => {
+        console.log("error:", e);
+        dispatch(postProductError());
+      });
   };
 };

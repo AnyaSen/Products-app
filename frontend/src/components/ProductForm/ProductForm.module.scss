@@ -7,13 +7,13 @@
   flex-direction: column;
   justify-content: center;
   padding: $space-5 $space-6;
+  max-width: 75rem;
 
   h2 {
     margin-bottom: $space-1;
   }
 
   @include lg {
-    align-items: center;
     padding: $space-5 $space-5;
   }
 
@@ -56,13 +56,27 @@
     }
   }
 
-  .DropzoneAndGeneralInfo {
+  .DropzoneGeneralInfoAndDescriptionContainer {
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    flex-direction: column;
+
+    .DropzoneGeneralInfoAndDescription {
+      .DropzoneAndGeneralInfo {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        @include lg {
+          flex-direction: column;
+        }
+      }
+      @include lg {
+        align-items: flex-start;
+        justify-content: flex-start;
+      }
+    }
 
     @include lg {
-      flex-direction: column;
       align-items: center;
       justify-content: center;
     }

@@ -2,12 +2,12 @@ import React, { ReactElement } from "react";
 
 import Styles from "./CreateProductFormPage.module.scss";
 
-import CreateProductForm from "../../components/CreateProductForm";
+import ProductForm from "../../components/ProductForm";
 
 export default function CreateProductFormPage(): ReactElement {
   return (
     <div className={Styles.CreateProductFormPage}>
-      <CreateProductForm />
+      <ProductForm />
     </div>
   );
 }

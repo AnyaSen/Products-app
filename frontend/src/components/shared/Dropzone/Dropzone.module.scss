@@ -1,0 +1,26 @@
+@import "../../../assets/scss/variables";
+@import "../../../assets/scss/breakpoints";
+
+.DropzoneContainer {
+  border: 1px solid $color-grey;
+  width: 25rem;
+  height: 15rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  outline: none;
+
+  button {
+    border: 1px solid $color-grey;
+  }
+
+  @include sm {
+    width: 20rem;
+  }
+
+  @include xs {
+    width: 15rem;
+    height: 10rem;
+  }
+}

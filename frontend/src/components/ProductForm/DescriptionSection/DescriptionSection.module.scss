@@ -1,0 +1,24 @@
+@import "../../../assets/scss/variables";
+@import "../../../assets/scss/breakpoints";
+
+.DescriptionSection {
+  @include lg {
+    margin-top: $space-5;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  @include md {
+    width: 100%;
+    margin-left: $space-5;
+  }
+
+  @include sm {
+    margin-top: $space-4;
+    margin-left: $space-5;
+  }
+
+  @include xs {
+    margin-left: 0;
+  }
+}

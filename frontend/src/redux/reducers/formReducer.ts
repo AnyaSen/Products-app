@@ -6,7 +6,6 @@ export interface IState {
   priceEuros: string;
   priceCents: string;
   pricePerKg: string;
-  unit: string;
   glutenFree: boolean;
   lactoseFree: boolean;
   vegan: boolean;
@@ -19,7 +18,6 @@ const initState: IState = {
   priceEuros: "",
   priceCents: "",
   pricePerKg: "",
-  unit: "",
   glutenFree: false,
   lactoseFree: false,
   vegan: false,
@@ -41,9 +39,6 @@ const formValuesReducer = (state: IState = initState, action: IAction) => {
     case AppEvents.SET_PRICE_PER_KG:
       return { ...state, pricePerKg: action.payload };
 
-    case AppEvents.SET_UNIT:
-      return { ...state, unit: action.payload };
-
     case AppEvents.SET_GLUTEN_FREE:
       return { ...state, glutenFree: action.payload };
 
@@ -55,8 +50,23 @@ const formValuesReducer = (state: IState = initState, action: IAction) => {
 
     case AppEvents.SET_DESCRIPTION:
       return { ...state, description: action.payload };
+
     case AppEvents.SET_FILE:
       return { ...state, file: action.payload };
+
+    case AppEvents.CLEAR_FORM_VALUES:
+      return {
+        ...state,
+        name: "",
+        priceEuros: "",
+        priceCents: "",
+        pricePerKg: "",
+        glutenFree: false,
+        lactoseFree: false,
+        vegan: false,
+        description: "",
+        file: []
+      };
 
     default:
       return { ...state };

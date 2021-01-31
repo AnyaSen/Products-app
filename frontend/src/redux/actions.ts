@@ -18,12 +18,12 @@ const {
   SET_PRICE_EUROS,
   SET_PRICE_CENTS,
   SET_PRICE_PER_KG,
-  SET_UNIT,
   SET_GLUTEN_FREE,
   SET_LACTOSE_FREE,
   SET_VEGAN,
   SET_DESCRIPTION,
-  SET_FILE
+  SET_FILE,
+  CLEAR_FORM_VALUES
 } = AppEvents;
 
 export const fetchProductsLoading = () => {
@@ -120,12 +120,6 @@ export const setPricePerKg = (payload: string | number) => {
     payload
   };
 };
-export const setUnit = (payload: string) => {
-  return {
-    type: SET_UNIT,
-    payload
-  };
-};
 export const setGlutenFree = (payload: boolean) => {
   return {
     type: SET_GLUTEN_FREE,
@@ -154,5 +148,10 @@ export const setFile = (payload: File[]) => {
   return {
     type: SET_FILE,
     payload
+  };
+};
+export const clearForm = () => {
+  return {
+    type: CLEAR_FORM_VALUES
   };
 };

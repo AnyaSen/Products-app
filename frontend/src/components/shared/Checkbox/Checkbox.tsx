@@ -1,5 +1,7 @@
 import React, { ReactElement } from "react";
 
+import Styles from "./Checkbox.module.scss";
+
 interface Props {
   label: string;
   value: string;
@@ -14,9 +16,9 @@ export default function Checkbox({
   onChange
 }: Props): ReactElement {
   return (
-    <label>
-      {label}
+    <label className={Styles.Checkbox}>
       <input name={name} type="checkbox" value={value} onChange={onChange} />
+      {label}
     </label>
   );
 }

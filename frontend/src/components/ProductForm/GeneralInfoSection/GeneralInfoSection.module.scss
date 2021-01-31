@@ -1,0 +1,42 @@
+@import "../../../assets/scss/variables";
+@import "../../../assets/scss/breakpoints";
+
+.GeneralInfoSection {
+  margin: 0 $space-3;
+  display: flex;
+  flex-direction: column;
+
+  @include lg {
+    flex-direction: row;
+    margin-top: $space-5;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  @include sm {
+    flex-direction: column;
+    margin-top: $space-4;
+  }
+
+  .PricePerUnitInfo {
+    display: flex;
+    align-items: center;
+
+    .PriceEurosAndCents {
+      display: flex;
+
+      @include xs {
+        flex-direction: column;
+      }
+    }
+
+    p {
+      color: $color-dark-grey;
+    }
+
+    @include xs {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+}

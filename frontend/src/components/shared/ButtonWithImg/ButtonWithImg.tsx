@@ -8,6 +8,7 @@ interface Props {
   buttonType?: "button" | "submit";
   filled?: boolean;
   iconHeight?: string;
+  onClick?: () => void;
 }
 
 export default function ButtonWithImg({
@@ -15,12 +16,14 @@ export default function ButtonWithImg({
   altText,
   buttonType,
   filled,
-  iconHeight
+  iconHeight,
+  onClick
 }: Props): ReactElement {
   return (
     <button
       className={filled ? Styles.ButtonWithImgFilled : Styles.ButtonWithImg}
       type={buttonType}
+      onClick={onClick}
     >
       <img
         style={{ height: iconHeight && iconHeight }}

@@ -8,6 +8,7 @@ type Props = {
   value: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void | undefined;
   type?: string;
+  small?: boolean;
 };
 
 export default function InputField({
@@ -15,12 +16,13 @@ export default function InputField({
   name,
   value,
   onChange,
-  type
+  type,
+  small
 }: Props): ReactElement {
   return (
     <div className={Styles.InputFieldContainer}>
       <input
-        className={Styles.InputField}
+        className={small ? Styles.InputFieldSmall : Styles.InputField}
         type={type}
         placeholder={placeholder}
         name={name}

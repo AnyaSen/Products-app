@@ -6,6 +6,8 @@ import {
 } from "../../../../redux/actions";
 import { useDispatch } from "react-redux";
 
+import Styles from "./CheckboxesSubsection.module.scss";
+
 import Checkbox from "../../../shared/Checkbox";
 
 export default function CheckboxesSubsection(): ReactElement {
@@ -21,7 +23,7 @@ export default function CheckboxesSubsection(): ReactElement {
     dispatch(setVegan(event.target.checked));
   };
   return (
-    <div>
+    <div className={Styles.CheckboxesSubsection}>
       <Checkbox
         label="Gluten-free"
         name="glutenFree"

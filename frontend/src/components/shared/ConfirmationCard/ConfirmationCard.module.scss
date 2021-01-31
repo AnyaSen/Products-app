@@ -1,0 +1,33 @@
+@import "../../../assets/scss/variables";
+@import "../../../assets/scss/breakpoints";
+
+.ConfirmationCard {
+  background-color: $color-white;
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: $space-0 $space-2;
+  border: 1px solid $color-orange;
+  margin-left: $space-2;
+  text-align: center;
+
+  p {
+    margin-right: $space-0;
+  }
+
+  button {
+    margin-left: $space-1;
+  }
+
+  @include lg {
+    margin-left: 0;
+    flex-direction: column;
+    width: 100%;
+
+    button {
+      margin: 0 $space-0;
+    }
+  }
+}

@@ -14,9 +14,7 @@ import LoadingPage from "./pages/LoadingPage";
 import ErrorPage from "./pages/ErrorPage";
 
 function App() {
-  const { isError, isLoading, products } = useSelector(
-    (state: IAppState) => state.app
-  );
+  const { isError, isLoading } = useSelector((state: IAppState) => state.app);
 
   const dispatch: ThunkDispatch<{}, {}, any> = useDispatch();
 

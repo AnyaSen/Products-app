@@ -65,7 +65,7 @@ export default function ProductPage({ match }: Props): ReactElement {
                 {price && (
                   <p className={Styles.ProductPrice}>
                     {price.priceEuros}.
-                    {price.priceCents ? price.priceCents : "00"}/{price.unit}
+                    {price.priceCents ? price.priceCents : "00"}/kpl
                     <span>{pricePerKg}/kg</span>
                   </p>
                 )}

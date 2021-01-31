@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const productSchema = new mongoose.Schema({
   name: { type: String, required: true, trim: true },
   price: {
-    type: { priceEuros: Number, priceCents: Number, unit: String },
+    type: { priceEuros: Number, priceCents: Number },
     required: true
   },
   pricePerKg: Number,

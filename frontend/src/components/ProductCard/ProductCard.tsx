@@ -10,7 +10,6 @@ interface Props {
   name: string;
   priceEuros: number;
   priceCents?: number;
-  unit: string;
   pricePerKg?: number;
   img: string;
   id: string;
@@ -18,7 +17,6 @@ interface Props {
 
 export default function ProductCard({
   name,
-  unit,
   pricePerKg,
   img,
   priceEuros,
@@ -34,7 +32,6 @@ export default function ProductCard({
           <PricePerUnit
             priceCents={priceCents ? priceCents : "00"}
             priceEuros={priceEuros}
-            unit={unit}
           />
 
           {pricePerKg && (

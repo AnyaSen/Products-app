@@ -27,7 +27,7 @@ export default function AvailableProductsList(): ReactElement {
           <div className={Styles.AvailableProductsList}>
             {products.map((product: productType) => {
               const { name, price, _id, pricePerKg } = product;
-              const { priceEuros, priceCents, unit } = price;
+              const { priceEuros, priceCents } = price;
               return (
                 <ProductCard
                   id={_id}
@@ -35,7 +35,6 @@ export default function AvailableProductsList(): ReactElement {
                   key={_id}
                   priceEuros={priceEuros}
                   priceCents={priceCents}
-                  unit={unit}
                   pricePerKg={pricePerKg}
                   img={`/products/${_id}/img`}
                 />

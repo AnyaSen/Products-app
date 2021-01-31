@@ -5,7 +5,6 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   padding: $space-5 $space-6;
 
   @include lg {
@@ -88,7 +87,7 @@
           line-height: 1.2rem;
 
           span {
-            color: $color-grey;
+            color: $color-dark-grey;
           }
         }
 
@@ -129,6 +128,7 @@
 
   .ProductDescription {
     margin-top: $space-5;
+    line-height: 1.8rem;
 
     h2 {
       margin-top: $space-4;

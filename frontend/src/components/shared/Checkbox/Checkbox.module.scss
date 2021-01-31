@@ -1,0 +1,11 @@
+@import "../../../assets/scss/variables";
+
+.Checkbox {
+  margin: 0 $space-1;
+
+  input {
+    margin-right: $space-1;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+}

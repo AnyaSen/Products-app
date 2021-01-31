@@ -1,10 +1,10 @@
 export interface productType {
   name: string;
-  _id: string;
-  price: { priceEuros: number; priceCents?: number; unit: string };
-  pricePerKg: number;
+  _id?: string;
+  price: { priceEuros: number; priceCents?: number };
+  pricePerKg?: number;
   description: string;
-  img: Buffer;
+  img?: Buffer;
   glutenFree: boolean;
   lactoseFree: boolean;
   vegan: boolean;

@@ -6,42 +6,51 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: $space-3 $space-6;
+  padding: $space-5 $space-6;
 
   @include lg {
-    padding: $space-3 $space-5;
+    padding: $space-5 $space-5;
     align-items: center;
   }
 
   @include md {
-    padding: $space-3 $space-0;
+    padding: $space-5 $space-4;
+  }
+
+  @include sm {
+    padding: $space-5 $space-3;
+  }
+
+  @include xs {
+    padding: $space-4 $space-2;
   }
 
   .AvailableProductsListHeader {
     display: flex;
     margin: $space-4 0;
+    align-items: center;
 
     h1 {
       text-align: center;
     }
 
-    button {
+    a {
       margin-left: $space-2;
+    }
+
+    @include sm {
+      button {
+        margin-bottom: $space-2;
+      }
     }
 
     @include sm {
       flex-direction: column-reverse;
 
-      button {
+      a {
         margin-left: 0;
-        margin-bottom: $space-2;
-      }
-    }
-
-    @include xs {
-      button {
-        margin-bottom: $space-0;
+        align-self: center;
+        margin-bottom: 0;
       }
     }
   }

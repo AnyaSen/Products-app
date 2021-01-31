@@ -10,15 +10,13 @@ interface Props {
   name: string;
   priceEuros: number;
   priceCents?: number;
-  unit: string;
   pricePerKg?: number;
   img: string;
-  id: string;
+  id: string | undefined;
 }
 
 export default function ProductCard({
   name,
-  unit,
   pricePerKg,
   img,
   priceEuros,
@@ -34,7 +32,6 @@ export default function ProductCard({
           <PricePerUnit
             priceCents={priceCents ? priceCents : "00"}
             priceEuros={priceEuros}
-            unit={unit}
           />
 
           {pricePerKg && (
@@ -42,10 +39,10 @@ export default function ProductCard({
           )}
         </div>
 
-        <p> {name}</p>
+        <p>{name}</p>
       </Link>
 
-      {/* <ButtonWithImg imgSrc={modifySignSvg} altText="Edit" /> */}
+      {/* <ButtonWithImg imgSrc={modifySignSvg} altText="Edit" iconHeight="1rem" /> */}
     </div>
   );
 }

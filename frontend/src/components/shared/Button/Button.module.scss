@@ -1,0 +1,15 @@
+@import "../../../assets//scss/variables";
+
+.Button {
+  padding: 0.2rem $space-0;
+  outline: none;
+  border: 1px solid $color-orange;
+  background-color: $color-white;
+  cursor: pointer;
+}
+
+.ButtonFilled {
+  @extend .Button;
+  background-color: $color-orange;
+  color: $color-white;
+}

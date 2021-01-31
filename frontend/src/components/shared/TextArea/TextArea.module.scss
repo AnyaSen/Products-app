@@ -1,0 +1,36 @@
+@import "../../../assets/scss/variables";
+@import "../../../assets/scss/breakpoints";
+
+.TextAreaContainer {
+  margin: $space-0;
+  line-height: 0.7rem;
+
+  .TextArea {
+    box-sizing: border-box;
+    height: 10rem;
+    min-width: 40rem;
+    outline: none;
+    border: 1px solid $color-grey;
+    font-family: inherit;
+    font-size: $font-sm;
+    padding: $space-0;
+    resize: none;
+
+    @include lg {
+      min-width: 30rem;
+      height: 6rem;
+    }
+
+    @include md {
+      min-width: 27rem;
+    }
+
+    @include sm {
+      min-width: 15rem;
+      height: 8rem;
+    }
+    @include xs {
+      margin: 0;
+    }
+  }
+}

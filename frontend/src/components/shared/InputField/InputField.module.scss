@@ -1,0 +1,25 @@
+@import "../../../assets/scss/variables";
+
+.InputFieldContainer {
+  margin: $space-1;
+
+  .InputField {
+    padding: $space-0;
+    font-size: $font-sm;
+    border: 1px solid $color-grey;
+    outline: none;
+  }
+
+  .InputFieldSmall {
+    @extend .InputField;
+    max-width: 5rem;
+  }
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}

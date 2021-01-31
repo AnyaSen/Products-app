@@ -1,0 +1,89 @@
+@import "../../assets/scss/variables";
+@import "../../assets/scss/breakpoints";
+
+.ProductForm {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: $space-5 $space-6;
+  max-width: 75rem;
+
+  h2 {
+    margin-bottom: $space-1;
+  }
+
+  @include lg {
+    padding: $space-5 $space-5;
+  }
+
+  @include md {
+    padding: $space-5 $space-4;
+  }
+
+  @include sm {
+    padding: $space-5 $space-3;
+  }
+
+  @include xs {
+    padding: $space-4 $space-2;
+  }
+
+  .ProductFormHeaderContainer {
+    display: flex;
+    margin-bottom: $space-5;
+    align-items: center;
+
+    @include lg {
+      flex-direction: column;
+    }
+
+    .ProductFormHeader {
+      display: flex;
+      align-items: center;
+
+      button {
+        margin: 0 $space-0;
+      }
+
+      h1 {
+        margin-right: $space-2;
+      }
+
+      @include lg {
+        margin-bottom: $space-2;
+      }
+    }
+  }
+
+  .DropzoneGeneralInfoAndDescriptionContainer {
+    display: flex;
+    flex-direction: column;
+
+    .DropzoneGeneralInfoAndDescription {
+      .DropzoneAndGeneralInfo {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        @include lg {
+          flex-direction: column;
+        }
+      }
+      @include lg {
+        align-items: flex-start;
+        justify-content: flex-start;
+      }
+    }
+
+    @include lg {
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+.ProductFormAsBackground {
+  @extend .ProductForm;
+  opacity: 0.3;
+}

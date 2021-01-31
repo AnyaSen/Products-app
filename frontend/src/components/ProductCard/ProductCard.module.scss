@@ -6,16 +6,19 @@
   margin: $space-0;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   padding: $space-2;
   min-width: 12rem;
 
   @include lg {
     flex-direction: row;
+    min-width: 23rem;
   }
 
   @include xs {
     padding: $space-0;
     flex-direction: column;
+    min-width: 12rem;
   }
 
   .Product {
@@ -35,9 +38,7 @@
 
     @include xs {
       flex-direction: column;
-    }
-
-    @include xs {
+      min-width: 12rem;
       padding: $space-0;
 
       p {
@@ -50,6 +51,15 @@
       width: 7rem;
       object-fit: contain;
       align-self: center;
+      margin-bottom: $space-2;
+
+      @include lg {
+        margin-bottom: 0;
+      }
+
+      @include xs {
+        margin-bottom: $space-2;
+      }
     }
 
     .ProductPrice {
@@ -58,7 +68,7 @@
       font-weight: 400;
 
       .ProductPricePerKg {
-        color: $color-grey;
+        color: $color-dark-grey;
         font-size: $font-xxs;
         text-align: center;
       }

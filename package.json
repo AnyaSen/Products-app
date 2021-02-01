@@ -25,6 +25,7 @@
   "devDependencies": {
     "cypress": "^6.3.0",
     "cypress-file-upload": "^5.0.2",
+    "redux-devtools-extension": "^2.13.8",
     "typescript": "^3.9.7"
   }
 }

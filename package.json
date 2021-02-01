@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "cypress": "^6.3.0",
+    "cypress-file-upload": "^5.0.2",
     "typescript": "^3.9.7"
   }
 }

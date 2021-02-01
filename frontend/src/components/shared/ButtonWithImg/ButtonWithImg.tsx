@@ -10,6 +10,7 @@ interface Props {
   iconHeight?: string;
   onClick?: () => void;
   disabled?: boolean;
+  dataCy?: string;
 }
 
 export default function ButtonWithImg({
@@ -19,7 +20,8 @@ export default function ButtonWithImg({
   filled,
   iconHeight,
   onClick,
-  disabled
+  disabled,
+  dataCy
 }: Props): ReactElement {
   return (
     <button
@@ -31,6 +33,7 @@ export default function ButtonWithImg({
       type={buttonType}
       onClick={onClick}
       disabled={disabled || false}
+      data-cy={dataCy}
     >
       <img
         style={{ height: iconHeight && iconHeight }}

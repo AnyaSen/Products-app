@@ -1,9 +1,14 @@
 @import "../../../assets/scss/variables";
+@import "../../../assets/scss/breakpoints";
 
 .ArrowButton {
   display: flex;
 
   img {
     height: 1.5rem;
+
+    @include xs {
+      height: 1rem;
+    }
   }
 }

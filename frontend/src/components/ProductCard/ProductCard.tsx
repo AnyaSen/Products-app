@@ -24,7 +24,7 @@ export default function ProductCard({
   id
 }: Props): ReactElement {
   return (
-    <div className={Styles.ProductContainer}>
+    <div className={Styles.ProductContainer} data-cy={`${name}-product`}>
       <Link to={`/product/${id}`} className={Styles.Product}>
         <img src={img} alt={name} className={Styles.ProductImage} />
 

@@ -1,7 +1,9 @@
 import React, { ReactElement } from "react";
 import { Link } from "react-router-dom";
+import { trimLongName } from "../../services/trimString";
 
 import Styles from "./ProductCard.module.scss";
+
 import modifySignSvg from "../../assets/img/modifySign.svg";
 import ButtonWithImg from "../shared/ButtonWithImg";
 import PricePerUnit from "../shared/PricePerUnit";
@@ -39,7 +41,7 @@ export default function ProductCard({
           )}
         </div>
 
-        <p>{name}</p>
+        <p>{trimLongName(name, 18)}</p>
       </Link>
 
       {/* <ButtonWithImg imgSrc={modifySignSvg} altText="Edit" iconHeight="1rem" /> */}

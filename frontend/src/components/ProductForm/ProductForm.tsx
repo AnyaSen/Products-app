@@ -127,6 +127,7 @@ export default function ProductForm(): ReactElement {
               buttonType="submit"
               filled
               disabled={enableSubmitButton ? false : true}
+              dataCy="submit-button"
             />
 
             <ButtonWithImg
@@ -134,6 +135,7 @@ export default function ProductForm(): ReactElement {
               imgSrc={cancelSignSvg}
               altText="Cancel"
               buttonType="button"
+              dataCy="cancel-button"
             />
           </div>
         </div>

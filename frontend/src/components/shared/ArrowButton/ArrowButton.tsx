@@ -11,7 +11,7 @@ interface Props {
 
 export default function ArrowButton({ linkTo }: Props): ReactElement {
   return (
-    <Link to={linkTo} className={Styles.ArrowButton}>
+    <Link to={linkTo} className={Styles.ArrowButton} data-cy="arrow-button">
       <img src={arrowLeftSvg} alt="Go back" />
     </Link>
   );

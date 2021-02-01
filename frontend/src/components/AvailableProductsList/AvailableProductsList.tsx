@@ -17,13 +17,13 @@ export default function AvailableProductsList(): ReactElement {
     <div className={Styles.AvailableProductsListContainer}>
       <div className={Styles.AvailableProductsListHeader}>
         <h1>Available products</h1>
-        <Link to="/create">
+        <Link to="/create" data-cy="create-product-button">
           <ButtonWithImg imgSrc={plusSignSvg} altText="Create Product" filled />
         </Link>
       </div>
       {products.length !== 0 ? (
         <>
-          <div className={Styles.AvailableProductsList}>
+          <div className={Styles.AvailableProductsList} data-cy="products-list">
             {products.map((product: productType) => {
               const { name, price, _id, pricePerKg } = product;
               const { priceEuros, priceCents } = price;
@@ -43,7 +43,7 @@ export default function AvailableProductsList(): ReactElement {
         </>
       ) : (
         <h3>
-          No products found. Press the blus button above to add a product.
+          No products found. Press the plus button above to add a product.
         </h3>
       )}
     </div>

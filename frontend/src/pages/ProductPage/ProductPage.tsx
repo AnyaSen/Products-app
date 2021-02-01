@@ -42,7 +42,7 @@ export default function ProductPage({ match }: Props): ReactElement {
   } = currentProduct;
 
   return (
-    <div className={Styles.ProductPage}>
+    <div className={Styles.ProductPage} data-cy="product-page">
       {currentProduct && (
         <>
           <div className={Styles.ProductPageHeader}>

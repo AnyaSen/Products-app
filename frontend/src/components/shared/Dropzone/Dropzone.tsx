@@ -37,7 +37,11 @@ export default function DropzoneComponent(): ReactElement {
         const isFileAccepted = acceptedFiles.length > 0;
 
         return (
-          <div {...getRootProps()} className={Styles.DropzoneContainer}>
+          <div
+            {...getRootProps()}
+            className={Styles.DropzoneContainer}
+            data-cy="dropzone"
+          >
             <input {...getInputProps()} />
             {isDragActive ? (
               <p>Drop a file here...</p>

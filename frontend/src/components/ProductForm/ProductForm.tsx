@@ -27,6 +27,7 @@ import ButtonWithImg from "../shared/ButtonWithImg";
 import ConfirmationCard from "../shared/ConfirmationCard";
 import Loader from "../shared/Loader";
 import DescriptionSection from "./DescriptionSection/DescriptionSection";
+import ArrowButton from "../shared/ArrowButton";
 
 export default function ProductForm(): ReactElement {
   const dispatch: ThunkDispatch<{}, {}, any> = useDispatch();
@@ -114,21 +115,27 @@ export default function ProductForm(): ReactElement {
     <form onSubmit={handleSubmit} className={Styles.ProductForm}>
       <div className={Styles.ProductFormHeaderContainer}>
         <div className={Styles.ProductFormHeader}>
-          <h1>Product information</h1>
-          <ButtonWithImg
-            imgSrc={doneSignSvg}
-            altText="Submit"
-            buttonType="submit"
-            filled
-            disabled={enableSubmitButton ? false : true}
-          />
+          <div>
+            <ArrowButton linkTo="/" />
+            <h1>Product information</h1>
+          </div>
 
-          <ButtonWithImg
-            onClick={() => setShowCancelConfirmation(true)}
-            imgSrc={cancelSignSvg}
-            altText="Cancel"
-            buttonType="button"
-          />
+          <div>
+            <ButtonWithImg
+              imgSrc={doneSignSvg}
+              altText="Submit"
+              buttonType="submit"
+              filled
+              disabled={enableSubmitButton ? false : true}
+            />
+
+            <ButtonWithImg
+              onClick={() => setShowCancelConfirmation(true)}
+              imgSrc={cancelSignSvg}
+              altText="Cancel"
+              buttonType="button"
+            />
+          </div>
         </div>
 
         {isPostProductLoading && <Loader small />}

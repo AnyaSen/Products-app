@@ -23,23 +23,13 @@ export default function ProductPage({ match }: Props): ReactElement {
   const products = useSelector((state: IAppState) => state.app.products);
 
   const [currentProduct, setCurrentProduct] = useState<productType | undefined>(
-    {}
+    undefined
   );
 
   useEffect(() => {
     const foundProduct = findProductById(products, id);
     setCurrentProduct(foundProduct);
   }, [products, id]);
-
-  const {
-    name,
-    price,
-    description,
-    pricePerKg,
-    glutenFree,
-    lactoseFree,
-    vegan
-  } = currentProduct;
 
   return (
     <div className={Styles.ProductPage} data-cy="product-page">
@@ -54,34 +44,41 @@ export default function ProductPage({ match }: Props): ReactElement {
           <div className={Styles.ProductInfoAndPhoto}>
             <img
               src={`/products/${id}/img`}
-              alt={name}
+              alt={currentProduct.name}
               className={Styles.ProductPhoto}
             />
 
             <div className={Styles.ProductInfo}>
               <div className={Styles.ProductNameAndPrice}>
-                <h2>{name}</h2>
+                <h2>{currentProduct.name}</h2>
 
-                {price && (
+                {currentProduct.price && (
                   <p className={Styles.ProductPrice}>
-                    {price.priceEuros}.
-                    {price.priceCents ? price.priceCents : "00"}/kpl
-                    {pricePerKg && <span>{pricePerKg}/kg</span>}
+                    {currentProduct.price.priceEuros}.
+                    {currentProduct.price.priceCents
+                      ? currentProduct.price.priceCents
+                      : "00"}
+                    /kpl
+                    {currentProduct.pricePerKg && (
+                      <span>{currentProduct.pricePerKg}/kg</span>
+                    )}
                   </p>
                 )}
               </div>
 
               <div className={Styles.ProductTags}>
-                {glutenFree && <ProductTag type="gluten-free" />}
-                {lactoseFree && <ProductTag type="lactose-free" />}
-                {vegan && <ProductTag type="vegan" />}
+                {currentProduct.glutenFree && <ProductTag type="gluten-free" />}
+                {currentProduct.lactoseFree && (
+                  <ProductTag type="lactose-free" />
+                )}
+                {currentProduct.vegan && <ProductTag type="vegan" />}
               </div>
             </div>
           </div>
 
           <div className={Styles.ProductDescription}>
             <h2>Description</h2>
-            <p>{description}</p>
+            <p>{currentProduct.description}</p>
           </div>
         </>
       )}

@@ -69,26 +69,29 @@ export default function ProductPage({ match }: Props): ReactElement {
       <div className={Styles.ProductPage} data-cy="product-page">
         {currentProduct && (
           <>
-            <div className={Styles.ProductPageHeader}>
-              <ArrowButton linkTo="/" />
+            <div className={Styles.ProductPageHeaderContainer}>
+              <div className={Styles.ProductPageHeader}>
+                <ArrowButton linkTo="/" />
 
-              <h1>Product information</h1>
+                <h1>Product information</h1>
 
-              <ButtonWithImg
-                imgSrc={trashSignSvg}
-                altText="Edit"
-                iconHeight="1rem"
-                onClick={() => setIsDeleteConfirmationOpen(true)}
-              />
-
-              {isDeleteConfirmationOpen && (
-                <ConfirmationCard
-                  text="Are you sure you want to delete the product?"
-                  onClickYesLinkTo="/"
-                  onClickYes={handleDeleteProductClick}
-                  onClickNo={() => setIsDeleteConfirmationOpen(false)}
-                  confirmationCardRef={confitmationCard}
+                <ButtonWithImg
+                  imgSrc={trashSignSvg}
+                  altText="Edit"
+                  iconHeight="1rem"
+                  onClick={() => setIsDeleteConfirmationOpen(true)}
                 />
+              </div>
+              {isDeleteConfirmationOpen && (
+                <div className={Styles.ConfirmationCard}>
+                  <ConfirmationCard
+                    text="Are you sure you want to delete the product?"
+                    onClickYesLinkTo="/"
+                    onClickYes={handleDeleteProductClick}
+                    onClickNo={() => setIsDeleteConfirmationOpen(false)}
+                    confirmationCardRef={confitmationCard}
+                  />
+                </div>
               )}
             </div>
 

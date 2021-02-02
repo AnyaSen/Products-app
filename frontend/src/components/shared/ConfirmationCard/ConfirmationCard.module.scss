@@ -21,13 +21,22 @@
     margin-left: $space-1;
   }
 
-  @include lg {
+  @include md {
     margin-left: 0;
     flex-direction: column;
     width: 100%;
+    max-width: 20rem;
 
     button {
       margin: 0 $space-0;
+    }
+  }
+
+  @include sm {
+    max-width: 15rem;
+    line-height: 1.5rem;
+    button {
+      margin: $space-0;
     }
   }
 }

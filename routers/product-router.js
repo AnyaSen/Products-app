@@ -74,4 +74,18 @@ router.get("/products/:id/img", async (req, res) => {
   }
 });
 
+router.delete("/products/:id", async (req, res) => {
+  const _id = req.params.id;
+
+  try {
+    const product = await Product.findByIdAndDelete(_id);
+    if (!product) {
+      return res.status(404).send();
+    }
+    res.send(product);
+  } catch {
+    res.status(500).send();
+  }
+});
+
 module.exports = router;

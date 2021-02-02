@@ -11,6 +11,10 @@ const {
   FETCH_PRODUCTS_LOADING,
   FETCH_PRODUCTS_SUCCESS,
   FETCH_PRODUCTS_ERROR,
+  DELETE_PRODUCT_LOADING,
+  DELETE_PRODUCT_SUCCESS,
+  DELETE_PRODUCT_ERROR,
+  DELETE_PRODUCT_LOCALLY,
   SET_NAME,
   SET_PRICE_EUROS,
   SET_PRICE_CENTS,
@@ -60,6 +64,49 @@ export const fetchProducts = () => {
       .catch(e => {
         console.log("error:", e);
         dispatch(fetchProductsError());
+      });
+  };
+};
+
+export const deleteProductLoading = () => {
+  return {
+    type: DELETE_PRODUCT_LOADING
+  };
+};
+
+export const deleteProductSuccess = () => {
+  return {
+    type: DELETE_PRODUCT_SUCCESS
+  };
+};
+
+export const deleteProductError = () => {
+  return {
+    type: DELETE_PRODUCT_ERROR
+  };
+};
+
+export const deleteProductLocally = (payload: string) => {
+  return {
+    type: DELETE_PRODUCT_LOCALLY,
+    payload
+  };
+};
+
+export const deleteProduct = (id: string) => {
+  return (dispatch: Dispatch<IAction>) => {
+    dispatch(deleteProductLoading());
+
+    axios
+      .delete(`/products/${id}`)
+      .then(response => {
+        dispatch(deleteProductSuccess());
+        dispatch(deleteProductLocally(id));
+        return response;
+      })
+      .catch(e => {
+        console.log("error:", e);
+        dispatch(deleteProductError());
       });
   };
 };

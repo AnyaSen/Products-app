@@ -157,6 +157,7 @@ export default function ProductForm(): ReactElement {
 
         {showCancelConfirmation && (
           <ConfirmationCard
+            text="Are you sure you want to leave?"
             onClickYes={handleLeaveFormClick}
             onClickNo={() => setShowCancelConfirmation(false)}
             onClickYesLinkTo="/"

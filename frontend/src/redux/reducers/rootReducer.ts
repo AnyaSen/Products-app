@@ -7,6 +7,8 @@ export interface IState {
   isLoading: boolean;
   isError: boolean;
   isPostProductError: boolean;
+  isDeleteProductError: boolean;
+  isDeleteLoading: boolean;
   enableSubmitButton: boolean;
 }
 
@@ -15,6 +17,8 @@ const initState: IState = {
   isLoading: true,
   isError: false,
   isPostProductError: false,
+  isDeleteProductError: false,
+  isDeleteLoading: false,
   enableSubmitButton: false
 };
 
@@ -38,6 +42,40 @@ const rootReducer = (state: IState = initState, action: IAction) => {
         ...state,
         isLoading: false,
         isError: true
+      };
+
+    case AppEvents.DELETE_PRODUCT_LOADING:
+      return {
+        ...state,
+        isDeleteLoading: true,
+        isDeleteProductError: true
+      };
+
+    case AppEvents.DELETE_PRODUCT_SUCCESS:
+      return {
+        ...state,
+        isDeleteLoading: false,
+        isDeleteProductError: false
+      };
+
+    case AppEvents.DELETE_PRODUCT_ERROR:
+      return {
+        ...state,
+        isDeleteProductError: false
+      };
+
+    case AppEvents.DELETE_PRODUCT_LOCALLY:
+      const updatedArr = state.products;
+
+      const productToDeleteIndex = updatedArr.findIndex(
+        (product: productType) => product._id === action.payload
+      );
+
+      updatedArr.splice(productToDeleteIndex, 1);
+      return {
+        ...state,
+
+        products: updatedArr
       };
 
     case AppEvents.POST_PRODUCT_LOADING:

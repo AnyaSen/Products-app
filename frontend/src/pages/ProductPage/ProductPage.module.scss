@@ -4,23 +4,42 @@
 .ProductPage {
   max-width: 1100px;
 
-  .ProductPageHeader {
+  .ProductPageHeaderContainer {
     display: flex;
-    width: fit-content;
-    align-items: center;
+    align-items: flex-start;
     margin-bottom: $space-6;
 
+    @include lg {
+      flex-direction: column;
+    }
+
     @include md {
-      margin-bottom: 0;
+      margin-bottom: $space-0;
     }
 
-    h1 {
-      margin-left: $space-3;
-      text-align: center;
+    @include sm {
+      align-items: center;
     }
 
-    button {
-      margin-left: $space-3;
+    .ProductPageHeader {
+      display: flex;
+      width: fit-content;
+      align-items: center;
+
+      @include lg {
+        margin-bottom: $space-2;
+      }
+
+      h1 {
+        margin-left: $space-3;
+        text-align: center;
+      }
+
+      button {
+        margin-left: $space-3;
+      }
+    }
+    .ConfirmationCard {
     }
   }
 
@@ -38,6 +57,10 @@
 
       @include md {
         margin: $space-4 0;
+      }
+
+      @include sm {
+        height: 8rem;
       }
     }
 

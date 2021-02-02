@@ -109,12 +109,15 @@
 
   .DeleteConfirmationButtons {
     display: flex;
+    align-items: center;
+    justify-content: center;
 
     @include lg {
       flex-direction: column;
     }
 
     @include xs {
+      flex-direction: row;
     }
 
     button {

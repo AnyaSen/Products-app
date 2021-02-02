@@ -48,7 +48,7 @@ const rootReducer = (state: IState = initState, action: IAction) => {
       return {
         ...state,
         isDeleteLoading: true,
-        isDeleteProductError: true
+        isDeleteProductError: false
       };
 
     case AppEvents.DELETE_PRODUCT_SUCCESS:
@@ -61,7 +61,8 @@ const rootReducer = (state: IState = initState, action: IAction) => {
     case AppEvents.DELETE_PRODUCT_ERROR:
       return {
         ...state,
-        isDeleteProductError: false
+        isDeleteLoading: false,
+        isDeleteProductError: true
       };
 
     case AppEvents.DELETE_PRODUCT_LOCALLY:
@@ -86,10 +87,16 @@ const rootReducer = (state: IState = initState, action: IAction) => {
       };
 
     case AppEvents.POST_PRODUCT_SUCCESS:
+      const arrayWithNewProduct = state.products;
+      arrayWithNewProduct.push(action.payload);
+
       return {
         ...state,
-        isPostProductError: false
+        products: arrayWithNewProduct,
+        isPostProductError: false,
+        isLoading: false
       };
+
     case AppEvents.POST_PRODUCT_ERROR:
       return {
         ...state,

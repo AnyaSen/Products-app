@@ -52,7 +52,7 @@ router.post(
     if (!product) {
       return res.status(404).send();
     }
-    res.send();
+    res.send(product);
   },
   (error, req, res, next) => {
     res.status(400).send({ error: error.message });

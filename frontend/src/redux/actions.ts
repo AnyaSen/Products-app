@@ -177,9 +177,10 @@ export const postProductLoading = () => {
   };
 };
 
-export const postProductSuccess = () => {
+export const postProductSuccess = (payload: productType) => {
   return {
-    type: POST_PRODUCT_SUCCESS
+    type: POST_PRODUCT_SUCCESS,
+    payload
   };
 };
 
@@ -218,8 +219,7 @@ export const postProduct = (product: productType, productPicture: FormData) => {
         );
       })
       .then(response => {
-        dispatch(postProductSuccess());
-        return response;
+        dispatch(postProductSuccess(response.data));
       })
       .catch(e => {
         console.log("error:", e);

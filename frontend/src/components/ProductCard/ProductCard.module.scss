@@ -46,6 +46,13 @@
       }
     }
 
+    .ProductNameWithoutPricePerKg {
+      margin-top: 1.2rem;
+      @include lg {
+        margin-top: 0;
+      }
+    }
+
     .ProductImage {
       height: 5rem;
       width: 7rem;

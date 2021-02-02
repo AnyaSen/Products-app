@@ -1,11 +1,10 @@
 import React, { ReactElement } from "react";
 import { Link } from "react-router-dom";
 import { trimLongName } from "../../services/trimString";
+import { modifyPriceCents } from "../../services/modifyPrice";
 
 import Styles from "./ProductCard.module.scss";
 
-import modifySignSvg from "../../assets/img/modifySign.svg";
-import ButtonWithImg from "../shared/ButtonWithImg";
 import PricePerUnit from "../shared/PricePerUnit";
 
 interface Props {
@@ -32,7 +31,7 @@ export default function ProductCard({
 
         <div className={Styles.ProductPrice}>
           <PricePerUnit
-            priceCents={priceCents ? priceCents : "00"}
+            priceCents={priceCents ? modifyPriceCents(priceCents) : "00"}
             priceEuros={priceEuros}
           />
 
@@ -41,10 +40,10 @@ export default function ProductCard({
           )}
         </div>
 
-        <p>{trimLongName(name, 18)}</p>
+        <p className={!pricePerKg ? Styles.ProductNameWithoutPricePerKg : ""}>
+          {trimLongName(name, 18)}
+        </p>
       </Link>
-
-      {/* <ButtonWithImg imgSrc={modifySignSvg} altText="Edit" iconHeight="1rem" /> */}
     </div>
   );
 }

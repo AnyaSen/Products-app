@@ -11,8 +11,7 @@ import {
   clearForm,
   postProduct,
   enableSubmit,
-  disableSubmit,
-  fetchProducts
+  disableSubmit
 } from "../../redux/actions";
 import { ThunkDispatch } from "redux-thunk";
 import { useHistory } from "react-router";
@@ -47,7 +46,7 @@ export default function ProductForm(): ReactElement {
   } = useSelector((state: IAppState) => state.form);
 
   const { form } = useSelector((state: IAppState) => state);
-  const { enableSubmitButton, isPostProductError, isLoading } = useSelector(
+  const { enableSubmitButton, isPostProductError } = useSelector(
     (state: IAppState) => state.app
   );
 
@@ -74,20 +73,10 @@ export default function ProductForm(): ReactElement {
 
       fd.append("upload", file[0], file[0].name);
 
-      const clearFormAndRedirect = () => {
-        if (!isPostProductError && !isLoading) {
-          dispatch(clearForm());
-          history.push("/");
-        }
-      };
+      await dispatch(postProduct(product, fd));
 
-      const postNewAndGetAllProducts = async () => {
-        await dispatch(postProduct(product, fd));
-        return dispatch(fetchProducts());
-      };
-
-      await postNewAndGetAllProducts();
-      return clearFormAndRedirect();
+      dispatch(clearForm());
+      history.push("/");
     }
   };
 

@@ -2,27 +2,7 @@
 @import "../../assets/scss/breakpoints";
 
 .ProductPage {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  padding: $space-5 $space-6;
-
-  @include lg {
-    padding: $space-5 $space-5;
-  }
-
-  @include md {
-    align-items: center;
-    padding: $space-5 $space-4;
-  }
-
-  @include sm {
-    padding: $space-5 $space-3;
-  }
-
-  @include xs {
-    padding: $space-4 $space-2;
-  }
+  max-width: 1100px;
 
   .ProductPageHeader {
     display: flex;
@@ -67,10 +47,6 @@
       flex-direction: column;
       justify-content: space-between;
 
-      @include lg {
-        flex-direction: row;
-      }
-
       @include md {
         margin-left: 0;
       }
@@ -81,7 +57,7 @@
       }
 
       .ProductNameAndPrice {
-        max-width: 15rem;
+        line-height: 1.8rem;
 
         .ProductPrice {
           display: flex;
@@ -89,17 +65,13 @@
           line-height: 1.2rem;
 
           span {
-            color: $color-dark-grey;
+            color: $color-dark-gray;
           }
         }
 
         h2 {
           font-weight: 400;
           margin-bottom: $space-0;
-        }
-
-        @include lg {
-          margin-right: $space-5;
         }
 
         @include xs {
@@ -111,7 +83,7 @@
       .ProductTags {
         display: flex;
         flex-direction: row;
-        margin-top: $space-1;
+        margin-top: $space-2;
 
         div {
           margin-right: $space-1;

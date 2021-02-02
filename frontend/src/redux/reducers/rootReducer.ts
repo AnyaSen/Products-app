@@ -7,7 +7,6 @@ export interface IState {
   isLoading: boolean;
   isError: boolean;
   isPostProductError: boolean;
-  isPostProductLoading: boolean;
   enableSubmitButton: boolean;
 }
 
@@ -16,7 +15,6 @@ const initState: IState = {
   isLoading: true,
   isError: false,
   isPostProductError: false,
-  isPostProductLoading: false,
   enableSubmitButton: false
 };
 
@@ -45,20 +43,19 @@ const rootReducer = (state: IState = initState, action: IAction) => {
     case AppEvents.POST_PRODUCT_LOADING:
       return {
         ...state,
-        isPostProductLoading: true,
+        isLoading: true,
         enableSubmitButton: false
       };
 
     case AppEvents.POST_PRODUCT_SUCCESS:
       return {
         ...state,
-        isPostProductLoading: false,
         isPostProductError: false
       };
     case AppEvents.POST_PRODUCT_ERROR:
       return {
         ...state,
-        isPostProductLoading: false,
+        isLoading: false,
         isPostProductError: true
       };
     case AppEvents.ENABLE_SUBMIT:

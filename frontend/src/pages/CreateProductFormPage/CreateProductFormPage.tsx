@@ -1,13 +1,12 @@
 import React, { ReactElement } from "react";
 
-import Styles from "./CreateProductFormPage.module.scss";
-
 import ProductForm from "../../components/ProductForm";
+import Layout from "../../components/shared/Layout";
 
 export default function CreateProductFormPage(): ReactElement {
   return (
-    <div className={Styles.CreateProductFormPage}>
+    <Layout>
       <ProductForm />
-    </div>
+    </Layout>
   );
 }

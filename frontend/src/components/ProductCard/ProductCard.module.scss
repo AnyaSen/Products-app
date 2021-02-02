@@ -46,6 +46,13 @@
       }
     }
 
+    .ProductNameWithoutPricePerKg {
+      margin-top: 1.2rem;
+      @include lg {
+        margin-top: 0;
+      }
+    }
+
     .ProductImage {
       height: 5rem;
       width: 7rem;
@@ -67,8 +74,16 @@
       line-height: 1.2rem;
       font-weight: 400;
 
+      @include lg {
+        align-self: center;
+      }
+
+      @include xs {
+        align-self: flex-end;
+      }
+
       .ProductPricePerKg {
-        color: $color-dark-grey;
+        color: $color-dark-gray;
         font-size: $font-xxs;
         text-align: center;
       }

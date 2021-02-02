@@ -25,9 +25,9 @@ import GeneralInfoSection from "./GeneralInfoSection";
 import DropzoneComponent from "../shared/Dropzone";
 import ButtonWithImg from "../shared/ButtonWithImg";
 import ConfirmationCard from "../shared/ConfirmationCard";
-import Loader from "../shared/Loader";
 import DescriptionSection from "./DescriptionSection/DescriptionSection";
 import ArrowButton from "../shared/ArrowButton";
+import ErrorPage from "../../pages/ErrorPage";
 
 export default function ProductForm(): ReactElement {
   const dispatch: ThunkDispatch<{}, {}, any> = useDispatch();
@@ -47,7 +47,7 @@ export default function ProductForm(): ReactElement {
   } = useSelector((state: IAppState) => state.form);
 
   const { form } = useSelector((state: IAppState) => state);
-  const { isPostProductLoading, enableSubmitButton } = useSelector(
+  const { enableSubmitButton, isPostProductError, isLoading } = useSelector(
     (state: IAppState) => state.app
   );
 
@@ -74,10 +74,20 @@ export default function ProductForm(): ReactElement {
 
       fd.append("upload", file[0], file[0].name);
 
-      await dispatch(postProduct(product, fd));
-      dispatch(clearForm());
-      dispatch(fetchProducts());
-      history.push("/");
+      const clearFormAndRedirect = () => {
+        if (!isPostProductError && !isLoading) {
+          dispatch(clearForm());
+          history.push("/");
+        }
+      };
+
+      const postNewAndGetAllProducts = async () => {
+        await dispatch(postProduct(product, fd));
+        return dispatch(fetchProducts());
+      };
+
+      await postNewAndGetAllProducts();
+      return clearFormAndRedirect();
     }
   };
 
@@ -111,6 +121,11 @@ export default function ProductForm(): ReactElement {
     }
   }, [form, readyToSubmit, enableSubmitButton]);
 
+  if (isPostProductError)
+    return (
+      <ErrorPage text="Sorry, something went wrong during the submission" />
+    );
+
   return (
     <form onSubmit={handleSubmit} className={Styles.ProductForm}>
       <div className={Styles.ProductFormHeaderContainer}>
@@ -139,8 +154,6 @@ export default function ProductForm(): ReactElement {
             />
           </div>
         </div>
-
-        {isPostProductLoading && <Loader small />}
 
         {showCancelConfirmation && (
           <ConfirmationCard

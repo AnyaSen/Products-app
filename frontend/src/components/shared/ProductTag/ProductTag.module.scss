@@ -2,10 +2,11 @@
 
 .ProductTag {
   display: flex;
-  background-color: $color-light-grey;
+  background-color: $color-light-gray;
   padding: 0.2rem $space-1;
   border-radius: 1.5rem;
   word-break: keep-all;
+  width: fit-content;
 
   img {
     height: 2rem;

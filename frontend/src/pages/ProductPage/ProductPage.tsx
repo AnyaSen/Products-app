@@ -5,12 +5,11 @@ import { IAppState } from "../../redux/store";
 import { findProductById } from "../../services/findProductById";
 
 import Styles from "./ProductPage.module.scss";
-import modifySignSvg from "../../assets/img/modifySign.svg";
 
 import ProductTag from "../../components/shared/ProductTag";
 import ArrowButton from "../../components/shared/ArrowButton";
-import ButtonWithImg from "../../components/shared/ButtonWithImg";
 import { productType } from "../../types";
+import Layout from "../../components/shared/Layout";
 
 interface MatchParams {
   id: string;
@@ -32,56 +31,59 @@ export default function ProductPage({ match }: Props): ReactElement {
   }, [products, id]);
 
   return (
-    <div className={Styles.ProductPage} data-cy="product-page">
-      {currentProduct && (
-        <>
-          <div className={Styles.ProductPageHeader}>
-            <ArrowButton linkTo="/" />
-            <h1>Product information</h1>
-            {/* <ButtonWithImg imgSrc={modifySignSvg} altText="Edit" iconHeight="1rem"/> */}
-          </div>
+    <Layout>
+      <div className={Styles.ProductPage} data-cy="product-page">
+        {currentProduct && (
+          <>
+            <div className={Styles.ProductPageHeader}>
+              <ArrowButton linkTo="/" />
+              <h1>Product information</h1>
+            </div>
 
-          <div className={Styles.ProductInfoAndPhoto}>
-            <img
-              src={`/products/${id}/img`}
-              alt={currentProduct.name}
-              className={Styles.ProductPhoto}
-            />
+            <div className={Styles.ProductInfoAndPhoto}>
+              <img
+                src={`/products/${id}/img`}
+                alt={currentProduct.name}
+                className={Styles.ProductPhoto}
+              />
 
-            <div className={Styles.ProductInfo}>
-              <div className={Styles.ProductNameAndPrice}>
-                <h2>{currentProduct.name}</h2>
+              <div className={Styles.ProductInfo}>
+                <div className={Styles.ProductNameAndPrice}>
+                  <h2>{currentProduct.name}</h2>
 
-                {currentProduct.price && (
-                  <p className={Styles.ProductPrice}>
-                    {currentProduct.price.priceEuros}.
-                    {currentProduct.price.priceCents
-                      ? currentProduct.price.priceCents
-                      : "00"}
-                    /kpl
-                    {currentProduct.pricePerKg && (
-                      <span>{currentProduct.pricePerKg}/kg</span>
-                    )}
-                  </p>
-                )}
-              </div>
+                  {currentProduct.price && (
+                    <p className={Styles.ProductPrice}>
+                      {currentProduct.price.priceEuros}.
+                      {currentProduct.price.priceCents
+                        ? currentProduct.price.priceCents
+                        : "00"}
+                      /kpl
+                      {currentProduct.pricePerKg && (
+                        <span>{currentProduct.pricePerKg}/kg</span>
+                      )}
+                    </p>
+                  )}
+                </div>
 
-              <div className={Styles.ProductTags}>
-                {currentProduct.glutenFree && <ProductTag type="gluten-free" />}
-                {currentProduct.lactoseFree && (
-                  <ProductTag type="lactose-free" />
-                )}
-                {currentProduct.vegan && <ProductTag type="vegan" />}
+                <div className={Styles.ProductTags}>
+                  {currentProduct.glutenFree && (
+                    <ProductTag type="gluten-free" />
+                  )}
+                  {currentProduct.lactoseFree && (
+                    <ProductTag type="lactose-free" />
+                  )}
+                  {currentProduct.vegan && <ProductTag type="vegan" />}
+                </div>
               </div>
             </div>
-          </div>
 
-          <div className={Styles.ProductDescription}>
-            <h2>Description</h2>
-            <p>{currentProduct.description}</p>
-          </div>
-        </>
-      )}
-    </div>
+            <div className={Styles.ProductDescription}>
+              <h2>Description</h2>
+              <p>{currentProduct.description}</p>
+            </div>
+          </>
+        )}
+      </div>
+    </Layout>
   );
 }

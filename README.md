@@ -10,11 +10,11 @@ The microservice provides a list of available products and allows to add new pro
 
 On the front page, a list of products is shown, to access more information about a product, click on it. To create a new product, click the plus button located in the header, a form will appear. Fill in the form and submit the product by pressing an orange button with a tick. You will be redirected to the product list, where the new product will be displayed.
 
-<!-- ## Demo link
+## Demo link
 
-[Click to go to demo]()
+[Click to go to demo](https://manageproductsmicroservice.herokuapp.com/)
 
-## Demo video
+<!-- ## Demo video
 
 [Click to watch the video]()
 

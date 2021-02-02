@@ -5,11 +5,9 @@ import { IAppState } from "../../redux/store";
 import { findProductById } from "../../services/findProductById";
 
 import Styles from "./ProductPage.module.scss";
-import modifySignSvg from "../../assets/img/modifySign.svg";
 
 import ProductTag from "../../components/shared/ProductTag";
 import ArrowButton from "../../components/shared/ArrowButton";
-import ButtonWithImg from "../../components/shared/ButtonWithImg";
 import { productType } from "../../types";
 
 interface MatchParams {
@@ -38,7 +36,6 @@ export default function ProductPage({ match }: Props): ReactElement {
           <div className={Styles.ProductPageHeader}>
             <ArrowButton linkTo="/" />
             <h1>Product information</h1>
-            {/* <ButtonWithImg imgSrc={modifySignSvg} altText="Edit" iconHeight="1rem"/> */}
           </div>
 
           <div className={Styles.ProductInfoAndPhoto}>

@@ -14,7 +14,9 @@ import LoadingPage from "./pages/LoadingPage";
 import ErrorPage from "./pages/ErrorPage";
 
 function App() {
-  const { isError, isLoading } = useSelector((state: IAppState) => state.app);
+  const { isError, isLoading, isPostProductError } = useSelector(
+    (state: IAppState) => state.app
+  );
 
   const dispatch: ThunkDispatch<{}, {}, any> = useDispatch();
 
@@ -24,6 +26,11 @@ function App() {
 
   if (isLoading) return <LoadingPage />;
   if (isError) return <ErrorPage />;
+  if (isPostProductError)
+    return (
+      <ErrorPage text="Sorry, something went wrong during the submission" />
+    );
+
   return (
     <div>
       <Switch>

@@ -77,13 +77,17 @@ export default function ProductPage({ match }: Props): ReactElement {
 
                 <ButtonWithImg
                   imgSrc={trashSignSvg}
-                  altText="Edit"
+                  altText="Delete"
                   iconHeight="1rem"
                   onClick={() => setIsDeleteConfirmationOpen(true)}
+                  dataCy="delete-button"
                 />
               </div>
               {isDeleteConfirmationOpen && (
-                <div className={Styles.ConfirmationCard}>
+                <div
+                  className={Styles.ConfirmationCard}
+                  data-cy="confirmation-card"
+                >
                   <ConfirmationCard
                     text="Are you sure you want to delete the product?"
                     onClickYesLinkTo="/"

@@ -97,9 +97,10 @@ export default function ProductCard({
       ) : (
         <ButtonWithImg
           imgSrc={trashSignSvg}
-          altText="Edit"
+          altText="Delete"
           iconHeight="1rem"
           onClick={() => setIsDeleteConfirmationOpen(true)}
+          dataCy="delete-button"
         />
       )}
     </div>

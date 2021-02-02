@@ -2,28 +2,29 @@
 @import "../../assets/scss/breakpoints";
 
 .AvailableProductsListContainer {
-  background-color: $color-light-grey;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  padding: $space-5 $space-6;
+  // background-color: $color-light-gray;
+  // min-height: 100vh;
+  // display: flex;
+  // flex-direction: column;
+  // padding: $space-5 $space-6;
+  max-width: 1100px;
 
-  @include lg {
-    padding: $space-5 $space-5;
-    align-items: center;
-  }
+  // @include lg {
+  //   padding: $space-5 $space-5;
+  //   align-items: center;
+  // }
 
-  @include md {
-    padding: $space-5 $space-4;
-  }
+  // @include md {
+  //   padding: $space-5 $space-4;
+  // }
 
-  @include sm {
-    padding: $space-5 $space-3;
-  }
+  // @include sm {
+  //   padding: $space-5 $space-3;
+  // }
 
-  @include xs {
-    padding: $space-4 $space-2;
-  }
+  // @include xs {
+  //   padding: $space-4 $space-2;
+  // }
 
   .AvailableProductsListHeader {
     display: flex;
@@ -36,6 +37,9 @@
 
     a {
       margin-left: $space-2;
+    }
+    @include lg {
+      justify-content: center;
     }
 
     @include sm {

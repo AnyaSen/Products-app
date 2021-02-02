@@ -2,27 +2,28 @@
 @import "../../assets/scss/breakpoints";
 
 .ProductPage {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  padding: $space-5 $space-6;
+  // min-height: 100vh;
+  // display: flex;
+  // flex-direction: column;
+  // padding: $space-5 $space-6;
+  max-width: 1100px;
 
-  @include lg {
-    padding: $space-5 $space-5;
-  }
+  // @include lg {
+  //   padding: $space-5 $space-5;
+  // }
 
-  @include md {
-    align-items: center;
-    padding: $space-5 $space-4;
-  }
+  // @include md {
+  //   align-items: center;
+  //   padding: $space-5 $space-4;
+  // }
 
-  @include sm {
-    padding: $space-5 $space-3;
-  }
+  // @include sm {
+  //   padding: $space-5 $space-3;
+  // }
 
-  @include xs {
-    padding: $space-4 $space-2;
-  }
+  // @include xs {
+  //   padding: $space-4 $space-2;
+  // }
 
   .ProductPageHeader {
     display: flex;
@@ -89,7 +90,7 @@
           line-height: 1.2rem;
 
           span {
-            color: $color-dark-grey;
+            color: $color-dark-gray;
           }
         }
 

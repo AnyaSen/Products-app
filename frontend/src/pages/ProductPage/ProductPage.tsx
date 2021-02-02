@@ -1,15 +1,21 @@
-import React, { ReactElement, useEffect, useState } from "react";
+import React, { ReactElement, useEffect, useState, useRef } from "react";
 import { RouteComponentProps } from "react-router";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { IAppState } from "../../redux/store";
 import { findProductById } from "../../services/findProductById";
+import { ThunkDispatch } from "redux-thunk";
+import { deleteProduct, deleteProductLocally } from "../../redux/actions";
+import { productType } from "../../types";
 
 import Styles from "./ProductPage.module.scss";
+import trashSignSvg from "../../assets/img/trashSign.svg";
 
 import ProductTag from "../../components/shared/ProductTag";
 import ArrowButton from "../../components/shared/ArrowButton";
-import { productType } from "../../types";
 import Layout from "../../components/shared/Layout";
+import ButtonWithImg from "../../components/shared/ButtonWithImg";
+
+import ConfirmationCard from "../../components/shared/ConfirmationCard";
 
 interface MatchParams {
   id: string;
@@ -17,6 +23,8 @@ interface MatchParams {
 
 interface Props extends RouteComponentProps<MatchParams> {}
 export default function ProductPage({ match }: Props): ReactElement {
+  const dispatch: ThunkDispatch<{}, {}, any> = useDispatch();
+
   const { id } = match.params;
 
   const products = useSelector((state: IAppState) => state.app.products);
@@ -25,10 +33,36 @@ export default function ProductPage({ match }: Props): ReactElement {
     undefined
   );
 
+  const [isDeleteConfirmationOpen, setIsDeleteConfirmationOpen] = useState(
+    false
+  );
+
   useEffect(() => {
     const foundProduct = findProductById(products, id);
     setCurrentProduct(foundProduct);
   }, [products, id]);
+
+  const handleDeleteProductClick = () => {
+    dispatch(deleteProduct(id));
+    deleteProductLocally(id);
+  };
+
+  const confitmationCard = useRef() as React.MutableRefObject<HTMLInputElement>;
+
+  useEffect(() => {
+    const handleClickOutsideConfirmation = (e: Event) => {
+      if (!e.composedPath().includes(confitmationCard.current)) {
+        setIsDeleteConfirmationOpen(false);
+
+        return;
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutsideConfirmation);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutsideConfirmation);
+    };
+  }, [confitmationCard]);
 
   return (
     <Layout>
@@ -37,7 +71,25 @@ export default function ProductPage({ match }: Props): ReactElement {
           <>
             <div className={Styles.ProductPageHeader}>
               <ArrowButton linkTo="/" />
+
               <h1>Product information</h1>
+
+              <ButtonWithImg
+                imgSrc={trashSignSvg}
+                altText="Edit"
+                iconHeight="1rem"
+                onClick={() => setIsDeleteConfirmationOpen(true)}
+              />
+
+              {isDeleteConfirmationOpen && (
+                <ConfirmationCard
+                  text="Are you sure you want to delete the product?"
+                  onClickYesLinkTo="/"
+                  onClickYes={handleDeleteProductClick}
+                  onClickNo={() => setIsDeleteConfirmationOpen(false)}
+                  confirmationCardRef={confitmationCard}
+                />
+              )}
             </div>
 
             <div className={Styles.ProductInfoAndPhoto}>

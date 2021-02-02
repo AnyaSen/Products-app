@@ -8,6 +8,7 @@ interface Props {
   onClickYes: () => void;
   onClickNo: () => void;
   onClickYesLinkTo: string;
+  text: string;
   confirmationCardRef?: React.MutableRefObject<HTMLInputElement>;
 }
 
@@ -15,11 +16,12 @@ export default function ConfirmationCard({
   onClickYes,
   onClickNo,
   onClickYesLinkTo,
-  confirmationCardRef
+  confirmationCardRef,
+  text
 }: Props): ReactElement {
   return (
     <div className={Styles.ConfirmationCard} ref={confirmationCardRef}>
-      <p>Are you sure you want to leave?</p>
+      <p>{text}</p>
 
       <div>
         <Link to={onClickYesLinkTo}>

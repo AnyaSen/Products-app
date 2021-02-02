@@ -26,6 +26,8 @@
     text-decoration: none;
     display: flex;
     flex-direction: column;
+    width: 100%;
+    justify-content: space-between;
 
     @include lg {
       flex-direction: row;
@@ -102,6 +104,21 @@
     @include xs {
       align-self: flex-end;
       margin-top: $space-0;
+    }
+  }
+
+  .DeleteConfirmationButtons {
+    display: flex;
+
+    @include lg {
+      flex-direction: column;
+    }
+
+    @include xs {
+    }
+
+    button {
+      margin: $space-1 $space-0;
     }
   }
 }

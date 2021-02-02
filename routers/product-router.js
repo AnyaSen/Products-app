@@ -74,18 +74,4 @@ router.get("/products/:id/img", async (req, res) => {
   }
 });
 
-router.get("/products/:id", async (req, res) => {
-  try {
-    const product = await Product.findById(req.params.id);
-
-    if (!product) {
-      return res.status(404).send();
-    }
-
-    res.send(product);
-  } catch (e) {
-    res.status(500).send();
-  }
-});
-
 module.exports = router;

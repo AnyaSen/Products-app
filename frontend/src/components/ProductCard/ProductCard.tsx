@@ -11,9 +11,7 @@ import ButtonWithImg from "../shared/ButtonWithImg";
 import Button from "../shared/Button";
 import { deleteProduct, deleteProductLocally } from "../../redux/actions";
 import { ThunkDispatch } from "redux-thunk";
-import { useDispatch, useSelector } from "react-redux";
-import { IAppState } from "../../redux/store";
-import Loader from "../shared/Loader";
+import { useDispatch } from "react-redux";
 
 interface Props {
   name: string;

@@ -1,5 +1,5 @@
 import React, { ReactElement, useEffect, useState, useRef } from "react";
-import { RouteComponentProps, useHistory } from "react-router";
+import { RouteComponentProps } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 import { IAppState } from "../../redux/store";
 import { findProductById } from "../../services/findProductById";
@@ -16,7 +16,6 @@ import Layout from "../../components/shared/Layout";
 import ButtonWithImg from "../../components/shared/ButtonWithImg";
 
 import ConfirmationCard from "../../components/shared/ConfirmationCard";
-import LoadingPage from "../LoadingPage";
 
 interface MatchParams {
   id: string;
@@ -28,9 +27,7 @@ export default function ProductPage({ match }: Props): ReactElement {
 
   const { id } = match.params;
 
-  const { products, isDeleteDone, isDeleteLoading } = useSelector(
-    (state: IAppState) => state.app
-  );
+  const { products } = useSelector((state: IAppState) => state.app);
 
   const [currentProduct, setCurrentProduct] = useState<productType | undefined>(
     undefined
@@ -67,14 +64,6 @@ export default function ProductPage({ match }: Props): ReactElement {
     };
   }, [confitmationCard]);
 
-  const history = useHistory();
-
-  useEffect(() => {
-    isDeleteDone && history.push("/");
-  }, [isDeleteDone]);
-
-  if (isDeleteLoading) return <LoadingPage />;
-
   return (
     <Layout>
       <div className={Styles.ProductPage} data-cy="product-page">
@@ -102,6 +91,7 @@ export default function ProductPage({ match }: Props): ReactElement {
                   <ConfirmationCard
                     text="Are you sure you want to delete the product?"
                     onClickYes={handleDeleteProductClick}
+                    onClickYesLinkTo="/"
                     onClickNo={() => setIsDeleteConfirmationOpen(false)}
                     confirmationCardRef={confitmationCard}
                   />

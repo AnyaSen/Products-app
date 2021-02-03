@@ -9,6 +9,7 @@ export interface IState {
   isPostProductError: boolean;
   isDeleteProductError: boolean;
   isDeleteLoading: boolean;
+  isDeleteDone: boolean;
   enableSubmitButton: boolean;
 }
 
@@ -19,6 +20,7 @@ const initState: IState = {
   isPostProductError: false,
   isDeleteProductError: false,
   isDeleteLoading: false,
+  isDeleteDone: false,
   enableSubmitButton: false
 };
 
@@ -55,7 +57,8 @@ const rootReducer = (state: IState = initState, action: IAction) => {
       return {
         ...state,
         isDeleteLoading: false,
-        isDeleteProductError: false
+        isDeleteProductError: false,
+        isDeleteDone: true
       };
 
     case AppEvents.DELETE_PRODUCT_ERROR:

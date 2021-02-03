@@ -11,7 +11,9 @@ import ButtonWithImg from "../shared/ButtonWithImg";
 import Button from "../shared/Button";
 import { deleteProduct, deleteProductLocally } from "../../redux/actions";
 import { ThunkDispatch } from "redux-thunk";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { IAppState } from "../../redux/store";
+import Loader from "../shared/Loader";
 
 interface Props {
   name: string;
@@ -31,6 +33,7 @@ export default function ProductCard({
   id
 }: Props): ReactElement {
   const dispatch: ThunkDispatch<{}, {}, any> = useDispatch();
+  const { isDeleteLoading } = useSelector((state: IAppState) => state.app);
 
   const [isDeleteConfirmationOpen, setIsDeleteConfirmationOpen] = useState(
     false
@@ -82,7 +85,9 @@ export default function ProductCard({
         </p>
       </Link>
 
-      {isDeleteConfirmationOpen ? (
+      {isDeleteLoading && <Loader small />}
+
+      {isDeleteConfirmationOpen && !isDeleteLoading && (
         <div
           className={Styles.DeleteConfirmationButtons}
           ref={deleteConfirmationRef}
@@ -94,7 +99,9 @@ export default function ProductCard({
           />
           <Button text="Delete" onClick={() => handleDeleteProductClick(id)} />
         </div>
-      ) : (
+      )}
+
+      {!isDeleteConfirmationOpen && !isDeleteLoading && (
         <ButtonWithImg
           imgSrc={trashSignSvg}
           altText="Delete"

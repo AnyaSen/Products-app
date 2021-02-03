@@ -28,3 +28,11 @@ Cypress.Commands.add("addImage", () => {
 
   cy.contains(file);
 });
+
+Cypress.Commands.add("fillTheForm", () => {
+  cy.visit("/create");
+  cy.fillGeneralInfo("Test", 2, 99, 13);
+  cy.fillDescription("SomeDescription");
+  cy.addImage();
+  cy.get("[data-cy=submit-button]").click();
+});

@@ -3,6 +3,9 @@ require("./db/mongoose");
 const ProductRouter = require("./routers/product-router");
 const path = require("path");
 
+const dotenv = require("dotenv");
+dotenv.config();
+
 const app = express();
 
 const port = process.env.PORT || 5000;

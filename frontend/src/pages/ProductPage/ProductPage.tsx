@@ -1,5 +1,5 @@
 import React, { ReactElement, useEffect, useState, useRef } from "react";
-import { RouteComponentProps } from "react-router";
+import { RouteComponentProps, useHistory } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 import { IAppState } from "../../redux/store";
 import { findProductById } from "../../services/findProductById";
@@ -16,6 +16,7 @@ import Layout from "../../components/shared/Layout";
 import ButtonWithImg from "../../components/shared/ButtonWithImg";
 
 import ConfirmationCard from "../../components/shared/ConfirmationCard";
+import LoadingPage from "../LoadingPage";
 
 interface MatchParams {
   id: string;
@@ -27,7 +28,9 @@ export default function ProductPage({ match }: Props): ReactElement {
 
   const { id } = match.params;
 
-  const products = useSelector((state: IAppState) => state.app.products);
+  const { products, isDeleteDone, isDeleteLoading } = useSelector(
+    (state: IAppState) => state.app
+  );
 
   const [currentProduct, setCurrentProduct] = useState<productType | undefined>(
     undefined
@@ -64,6 +67,14 @@ export default function ProductPage({ match }: Props): ReactElement {
     };
   }, [confitmationCard]);
 
+  const history = useHistory();
+
+  useEffect(() => {
+    isDeleteDone && history.push("/");
+  }, [isDeleteDone]);
+
+  if (isDeleteLoading) return <LoadingPage />;
+
   return (
     <Layout>
       <div className={Styles.ProductPage} data-cy="product-page">
@@ -77,16 +88,19 @@ export default function ProductPage({ match }: Props): ReactElement {
 
                 <ButtonWithImg
                   imgSrc={trashSignSvg}
-                  altText="Edit"
+                  altText="Delete"
                   iconHeight="1rem"
                   onClick={() => setIsDeleteConfirmationOpen(true)}
+                  dataCy="delete-button"
                 />
               </div>
               {isDeleteConfirmationOpen && (
-                <div className={Styles.ConfirmationCard}>
+                <div
+                  className={Styles.ConfirmationCard}
+                  data-cy="confirmation-card"
+                >
                   <ConfirmationCard
                     text="Are you sure you want to delete the product?"
-                    onClickYesLinkTo="/"
                     onClickYes={handleDeleteProductClick}
                     onClickNo={() => setIsDeleteConfirmationOpen(false)}
                     confirmationCardRef={confitmationCard}

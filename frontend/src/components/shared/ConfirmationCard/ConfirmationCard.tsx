@@ -7,7 +7,7 @@ import Button from "../Button";
 interface Props {
   onClickYes: () => void;
   onClickNo: () => void;
-  onClickYesLinkTo: string;
+  onClickYesLinkTo?: string;
   text: string;
   confirmationCardRef?: React.MutableRefObject<HTMLInputElement>;
 }
@@ -24,9 +24,13 @@ export default function ConfirmationCard({
       <p>{text}</p>
 
       <div>
-        <Link to={onClickYesLinkTo}>
+        {onClickYesLinkTo ? (
+          <Link to={onClickYesLinkTo}>
+            <Button text="Yes" onClick={onClickYes} />
+          </Link>
+        ) : (
           <Button text="Yes" onClick={onClickYes} />
-        </Link>
+        )}
 
         <Button text="No" onClick={onClickNo} filled />
       </div>

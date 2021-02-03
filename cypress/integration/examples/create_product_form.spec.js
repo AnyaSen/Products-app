@@ -42,6 +42,11 @@ describe("CreateProductFormPage and ProductPage", () => {
       .and("contain", `${pricePerKg}/kg`)
       .and("contain", description)
       .and("contain", "Gluten-free");
+
+    cy.get("[data-cy=delete-button]").click();
+    cy.get("button")
+      .contains("Yes")
+      .click();
   });
 
   it("Has the right text and buttons", () => {

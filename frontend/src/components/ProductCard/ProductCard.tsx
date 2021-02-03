@@ -33,7 +33,6 @@ export default function ProductCard({
   id
 }: Props): ReactElement {
   const dispatch: ThunkDispatch<{}, {}, any> = useDispatch();
-  const { isDeleteLoading } = useSelector((state: IAppState) => state.app);
 
   const [isDeleteConfirmationOpen, setIsDeleteConfirmationOpen] = useState(
     false
@@ -85,9 +84,7 @@ export default function ProductCard({
         </p>
       </Link>
 
-      {isDeleteLoading && <Loader small />}
-
-      {isDeleteConfirmationOpen && !isDeleteLoading && (
+      {isDeleteConfirmationOpen ? (
         <div
           className={Styles.DeleteConfirmationButtons}
           ref={deleteConfirmationRef}
@@ -99,9 +96,7 @@ export default function ProductCard({
           />
           <Button text="Delete" onClick={() => handleDeleteProductClick(id)} />
         </div>
-      )}
-
-      {!isDeleteConfirmationOpen && !isDeleteLoading && (
+      ) : (
         <ButtonWithImg
           imgSrc={trashSignSvg}
           altText="Delete"

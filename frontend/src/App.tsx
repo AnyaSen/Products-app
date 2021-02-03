@@ -17,6 +17,7 @@ function App() {
   const {
     isError,
     isLoading,
+    isDeleteLoading,
     isPostProductError,
     isDeleteProductError
   } = useSelector((state: IAppState) => state.app);
@@ -27,7 +28,7 @@ function App() {
     dispatch(fetchProducts());
   }, []);
 
-  if (isLoading) return <LoadingPage />;
+  if (isLoading || isDeleteLoading) return <LoadingPage />;
   if (isError) return <ErrorPage />;
   if (isPostProductError)
     return (
